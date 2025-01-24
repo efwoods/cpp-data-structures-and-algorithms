@@ -6,8 +6,8 @@
 - finding an item by value is an O(n) operation.
 - finding an item by index is O(1). It is possible to go directly to that location of the index in memory.
 - There are five main operations (from fastest to slowest):
-  - O(1): 1 operation regardless of size
-  - O(logn): how many times does it take to divide a list in half until you have 1 element?
-  - O(n): 1 operation for each iteration of n
+  - O(1): 1 operation regardless of size; Constant
+  - O(logn): how many times does it take to divide a list in half until you have 1 element? Divide and conquer
+  - O(n): 1 operation for each iteration of n; Proportional
   - O(nlogn): This is the fastest runtime for sorting algorithms
-  - O(n^2): This is a double nested for loop; n*n operations for each value of n
+  - O(n^2): This is a double nested for loop; n*n operations for each value of n; Loop within a loop;
