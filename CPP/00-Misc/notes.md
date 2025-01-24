@@ -1,0 +1,9 @@
+- If there are two variables, a & b, in separate for loops, it is O(a + b).
+- If there are two variables, a & b, in nested for loops, it is O(a*b).
+- pushing and popping elements from the end of a list are O(1).
+- There are five main operations (from fastest to slowest):
+  - O(1): 1 operation regardless of size
+  - O(logn): how many times does it take to divide a list in half until you have 1 element?
+  - O(n): 1 operation for each iteration of n
+  - O(nlogn): This is the fastest runtime for sorting algorithms
+  - O(n^2): This is a double nested for loop; n*n operations for each value of n
