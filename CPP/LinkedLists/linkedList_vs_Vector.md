@@ -1,0 +1,6 @@
+- Linked lists are faster:
+  - Prepending to the beginning of the list
+  - Removing from the list
+- Vectors are faster:
+  - Looking up by index
+  - Removing from the last element
