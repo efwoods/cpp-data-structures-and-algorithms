@@ -163,6 +163,54 @@ class LinkedList{
             }
         }
 
+        // Delete Node
+        void deleteNode(int index){
+            if (length == 0){
+                return;
+            } else if (index >= length - 1) {
+                deleteLast();
+            } else if (index <= 0){
+                deleteFirst();
+            } else {
+                int i = 0;
+                Node* pre = head;
+                Node* post = head;
+                while(i < index){
+                    pre = post;
+                    post = post->next;
+                    i++;
+                }
+                pre->next = post->next;
+                delete post;
+                length--;
+            }
+        }
+
+        // Reverse List
+        void reverse(){
+            if (length <= 1){
+                return;
+            } else {
+                Node* first = head;
+                Node* last = tail;
+                Node* penultimate;
+                int temp;
+                for (int i = 0; i < length/2; i++){
+                    temp = first->value;
+                    first->value = last->value;
+                    last->value = temp;
+                    first = first->next;
+                    penultimate = first;
+                    if (length > 3 && (i < (length/2 - 1))){
+                        while(penultimate->next != last){
+                            penultimate = penultimate->next;
+                        }
+                        last = penultimate;
+                    }
+                }
+            }
+        }
+
         void printList() {
             Node* temp = head;
             while(temp){
@@ -253,27 +301,155 @@ int main(){
     // myList->printList();
 
     // Testing Insert
+    // LinkedList* myList = new LinkedList(1);
+    // myList->deleteFirst();
+    // myList->printList();
+
+    // cout << "Empty List." << "\n\n";
+
+    // myList->insert(0,1); // insert into empty LinkedList
+    // myList->printList();
+
+    // cout << "\n";
+
+    // myList->insert(2, 2); // insert at end of list
+    // myList->printList();
+
+    // cout << "\n";
+
+    // myList->insert(0, 0); // insert at beginning of list
+    // myList->printList();
+
+    // cout << "\n";
+
+    // myList->insert(1, 3); // insert after index == 1; values: 0, 3, 1, 2
+    // myList->printList();
+
+    // Testing Delete Node
+    // LinkedList *myList = new LinkedList(1);
+    // myList->printList();
+    // cout << "\n";
+
+    // // Testing delete length of 1 @ index of node index;
+    // myList->deleteNode(0);
+    // myList->printList();
+    // cout << "Empyt List." << "\n";
+    // cout << "\n";
+
+    // // Testing delete length of 1 @ index less than node index;
+    // myList->append(1);
+    // myList->printList();
+    // cout << "\n";
+
+    // myList->deleteNode(-1);
+    // myList->printList();
+    // cout << "Empyt List." << "\n";
+    // cout << "\n";
+
+    // // Testing delete length of 1 @ index greather than node index;
+    // myList->append(1);
+    // myList->printList();
+    // cout << "\n";
+
+    // myList->deleteNode(1);
+    // myList->printList();
+    // cout << "Empyt List." << "\n";
+    // cout << "\n";
+
+    // myList->append(1);
+    // myList->append(2);
+    // myList->printList();
+    // cout << "\n";
+
+    // // Delete first node of 2 nodes
+    // myList->deleteNode(0);
+    // myList->printList();
+    // cout << "\n";
+
+    // // Reset to: 1, 2
+    // myList->prepend(1);
+    // myList->printList();
+    // cout << "\n";
+
+    // // Delete last of 2 nodes
+    // myList->deleteNode(1);
+    // myList->printList();
+    // cout << "\n";
+
+    // // Reset to: 0, 1, 2
+    // myList->prepend(0);
+    // myList->append(2);
+    // myList->printList();
+    // cout << "\n";
+
+    // // Testing Delete index 1 (this is value 1) to: 0, 2
+    // myList->deleteNode(1);
+    // myList->printList();
+    // cout << "\n";
+
+    // Test Reversing the List
     LinkedList* myList = new LinkedList(1);
+    myList->printList();
+    cout << "\n";
+
     myList->deleteFirst();
     myList->printList();
+    cout << "Empty List.\n" << "\n";
 
-    cout << "Empty List." << "\n\n";
-
-    myList->insert(0,1); // insert into empty LinkedList
+    // Testing Reversing an empty List
+    myList->reverse();
     myList->printList();
+    cout << "Empty List.\n" << "\n";
 
+    myList->append(0);
+    myList->printList();
     cout << "\n";
 
-    myList->insert(2, 2); // insert at end of list
+    // Testing reversing a singleton list;
+    myList->reverse();
     myList->printList();
-
     cout << "\n";
 
-    myList->insert(0, 0); // insert at beginning of list
+    // Reset: 0, 1
+    myList->append(1);
     myList->printList();
-
     cout << "\n";
 
-    myList->insert(1, 3); // insert after index == 1; values: 0, 3, 1, 2
+    // Testing reversing a two-element list from 0, 1 to 1, 0;
+    myList->reverse();
     myList->printList();
+    cout << "\n";
+
+    // Reset: 0, 1, 2
+    myList->reverse();
+    myList->append(2);
+    myList->printList();
+    cout << "\n";
+
+    // Testing reversing a three element list from 0, 1, 2 to 2, 1, 0;
+    myList->reverse();
+    myList->printList();
+    cout << "\n";
+
+    // Reset to 0, 1, 2, 3
+    myList->reverse();
+    myList->append(3);
+    myList->printList();
+    cout << "\n";
+
+    // Testing reversing a 4 element list from 0, 1, 2, 3 to 3, 2, 1, 0
+    myList->reverse();
+    myList->printList();
+    cout << "\n";
+
+    // Rest to 0, 1, 2, 3, 4
+    myList->prepend(4);
+    myList->reverse();
+    myList->printList();
+    cout << "\n";
+
+    // Testing reversing a 5 element list from 0 -> 4 to 4, 3, 2, 1, 0
+    myList->reverse();
+    myList->printList();
+    cout << "\n";
 }
