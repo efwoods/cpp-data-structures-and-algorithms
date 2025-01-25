@@ -1,2 +1,2 @@
-# udemy-c-plus-plus-data-structures-and-algorithms
-https://www.udemy.com/course/data-structures-algorithms-cpp/learn/lecture/30637548#overview
+# [cpp-data-structures-and-algorithms](https://www.udemy.com/course/data-structures-algorithms-cpp/learn/lecture/30637548#overview)
+C++ Data Structures and Algorithms for future use. Tests are included.
