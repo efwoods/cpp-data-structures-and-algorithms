@@ -3,31 +3,27 @@
 using namespace std;
 
 class Cookie {
-    private:
+    private: // attributes
         string color;
 
-    public:
-        Cookie (string color) {
-            this->color = color;
+    public: 
+        Cookie (string color) { //constructor: a member function that has the same name as the class
+            this->color = color; // changes the private string color;
         }
-        string getColor () {
-            return color;
+        string getColor(){
+            return this->color;
         }
-        void setColor (string color) {
+        void setColor(string color) {
             this->color = color;
         }
 };
 
-
-int main() {
-
+int main(){
     Cookie* cookieOne = new Cookie("green");
     Cookie* cookieTwo = new Cookie("blue");
 
-    cookieOne->setColor("yellow"); 
+    cookieOne->setColor("yellow");
 
-    cout << "C1: " << cookieOne->getColor() << endl;
-    cout << "C2: " << cookieTwo->getColor() << endl;
-
+    cout << "cookieOne = " << cookieOne->getColor() << endl;
+    cout << "cookieTwo = " << cookieTwo->getColor() << endl;
 }
-
