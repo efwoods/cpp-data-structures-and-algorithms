@@ -37,7 +37,7 @@ class Node:
         __init__(self, value):
             Initializes the node with a value and sets the next reference to None.
     """
-    
+
     def __init__(self, value):
         self.value = value
         self.next = None
@@ -135,8 +135,6 @@ class LinkedList:
             self.head = None
             self.tail = None
             self.length = 0
-        else:
-            return
 
     def prepend(self, value):
         """
@@ -170,8 +168,6 @@ class LinkedList:
             self.head = None
             self.tail = None
             self.length = 0
-        else:
-            return
 
     def get(self, index):
         """
@@ -189,15 +185,14 @@ class LinkedList:
         """
         if index == 0:
             return self.head
-        elif index >= self.length:
+        if index >= self.length:
             return None
-        else:
-            temp = self.head
-            i = 0
-            while i < index:
-                temp = temp.next
-                i += 1
-            return temp
+        temp = self.head
+        i = 0
+        while i < index:
+            temp = temp.next
+            i += 1
+        return temp
 
     def set(self, index, value):
         """
@@ -240,13 +235,13 @@ class LinkedList:
             self.length = 0
         elif index >= self.length:
             self.append(value)
-        elif (index <= 0):
+        elif index <= 0:
             self.prepend(value)
         else:
             i = 0
             pre = self.head
             post = self.head
-            while (i < index):
+            while i < index:
                 pre = post
                 post = post.next
                 i += 1
@@ -265,7 +260,7 @@ class LinkedList:
         """
         if self.length == 0:
             return
-        elif index >= self.length - 1:
+        if index >= self.length - 1:
             self.delete_last()
         elif index <= 0:
             self.delete_first()
@@ -285,9 +280,7 @@ class LinkedList:
         """
         This method will reverse the linked list.
         """
-        if self.length <= 1:
-            return
-        else:
+        if self.length > 1:
             first = self.head
             last = self.tail
             for i in range(0, self.length // 2):
