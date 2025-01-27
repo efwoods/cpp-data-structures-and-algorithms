@@ -42,6 +42,28 @@ class Node:
         self.value = value
         self.next = None
 
+    def get_value(self):
+        """
+        This method will get the value of the node.
+
+        Returns
+        -------
+        int
+            This is the value of the node.
+        """
+        return self.value
+
+    def get_next(self):
+        """
+        This method will return the next node pointed to by this node.
+
+        Returns
+        -------
+        Node
+            This is the next node that is pointed to by this node.
+        """
+        return self.next
+
 class LinkedList:
     """
     A class used to represent a linked list.
