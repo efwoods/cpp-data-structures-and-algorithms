@@ -30,6 +30,23 @@ void DoublyLinkedList::append(int value){
     length++;
 }
 
+void DoublyLinkedList::deleteLast(){
+    if(length > 1){
+        Node* temp = tail;
+        tail = tail->prev;
+        tail->next = nullptr;
+        delete temp;
+        length--;
+    } else if (length == 1) {
+        delete tail;
+        head = nullptr;
+        tail = nullptr;
+        length = 0;
+    } else {
+        return;
+    }
+}
+
 void DoublyLinkedList::getHead() {
     cout << "Head: " << head->value << endl;
 }
