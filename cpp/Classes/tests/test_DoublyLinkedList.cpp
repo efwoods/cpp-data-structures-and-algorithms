@@ -9,3 +9,9 @@ TEST(DoublyLinkedListTest, Constructor){
     DoublyLinkedList* DLL = new DoublyLinkedList(10);
     DLL->printList();
 }
+
+TEST(DoublyLinkedListTest, Append){
+    DoublyLinkedList* DLL = new DoublyLinkedList(1);
+    DLL->append(2);
+    DLL->printList();
+}

@@ -17,6 +17,19 @@ void DoublyLinkedList::printList() {
     }
 }
 
+void DoublyLinkedList::append(int value){
+    Node* newNode = new Node(value);
+    if(tail){
+        tail->next = newNode;
+        newNode->prev = tail;
+        tail = newNode;
+    } else {
+        head = newNode;
+        tail = newNode;
+    }
+    length++;
+}
+
 void DoublyLinkedList::getHead() {
     cout << "Head: " << head->value << endl;
 }
