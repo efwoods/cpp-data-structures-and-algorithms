@@ -1,2 +1,2 @@
-# [cpp-data-structures-and-algorithms](https://www.udemy.com/course/data-structures-algorithms-cpp/learn/lecture/30637548#overview)
-C++ Data Structures and Algorithms for future use. Tests are included.
+# [data-structures-and-algorithms](https://www.udemy.com/course/data-structures-algorithms-cpp/learn/lecture/30637548#overview)
+Data Structures and Algorithms for future use. Languages are provided in both C++ and Python. Tests are included.
