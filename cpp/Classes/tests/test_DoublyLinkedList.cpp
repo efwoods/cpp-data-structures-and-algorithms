@@ -35,8 +35,23 @@ TEST(DoublyLinkedListTest, DeleteLast){
     // Expect Empty;
 }
 
-TEST(DoublyLinkedListTest, prepend){
+TEST(DoublyLinkedListTest, Prepend){
     DoublyLinkedList* DLL = new DoublyLinkedList(1);
     DLL->prepend(0);
+    DLL->printList();
+}
+
+TEST(DoublyLinkedListTest, DeleteFirst){
+    DoublyLinkedList* DLL = new DoublyLinkedList(0);
+    DLL->append(1);
+    DLL->printList();
+
+    DLL->deleteFirst(); // Delete "0" from two-item list
+    DLL->printList();
+
+    DLL->deleteFirst(); // Delete "1" from singleton list
+    DLL->printList();
+
+    DLL->deleteFirst(); // Delete nothing from empty list
     DLL->printList();
 }

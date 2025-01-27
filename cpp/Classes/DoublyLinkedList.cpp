@@ -61,6 +61,24 @@ void DoublyLinkedList::prepend(int value){
     }
 }
 
+void DoublyLinkedList::deleteFirst(){
+    if(length > 1){
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        length--;
+    } else if (length == 1){
+        delete head;
+        head = nullptr;
+        tail = nullptr;
+        length = 0;
+    } else {
+        return;
+    }
+}
+
+
+
 void DoublyLinkedList::getHead() {
     cout << "Head: " << head->value << endl;
 }
