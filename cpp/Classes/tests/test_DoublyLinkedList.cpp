@@ -16,7 +16,7 @@ TEST(DoublyLinkedListTest, Append){
     DLL->printList();
 }
 
-TEST(DoublyLinkedListTest, DelteLast){
+TEST(DoublyLinkedListTest, DeleteLast){
     DoublyLinkedList* DLL = new DoublyLinkedList(1);
     DLL->append(2);
     DLL->printList();
@@ -33,4 +33,10 @@ TEST(DoublyLinkedListTest, DelteLast){
     DLL->deleteLast(); // Delete nothing from empty list
     DLL->printList();
     // Expect Empty;
+}
+
+TEST(DoublyLinkedListTest, prepend){
+    DoublyLinkedList* DLL = new DoublyLinkedList(1);
+    DLL->prepend(0);
+    DLL->printList();
 }

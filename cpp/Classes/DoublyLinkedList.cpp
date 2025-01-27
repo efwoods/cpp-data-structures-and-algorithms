@@ -47,6 +47,20 @@ void DoublyLinkedList::deleteLast(){
     }
 }
 
+void DoublyLinkedList::prepend(int value){
+    Node* newNode = new Node(value);
+    if(head){
+        newNode->next = head;
+        head = newNode;
+        length++;
+    }
+    else {
+        head = newNode;
+        tail = newNode;
+        length = 1;
+    }
+}
+
 void DoublyLinkedList::getHead() {
     cout << "Head: " << head->value << endl;
 }
