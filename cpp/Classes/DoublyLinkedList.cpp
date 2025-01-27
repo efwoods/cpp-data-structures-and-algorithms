@@ -1,0 +1,118 @@
+#include "DoublyLinkedList.h"
+#include <iostream>
+
+using namespace std;
+DoublyLinkedList::DoublyLinkedList(int value){
+    Node* newNode = new Node(value);
+    head = newNode;
+    tail = newNode;
+    length = 1;
+}
+
+void DoublyLinkedList::printList() {
+    Node* temp = head;
+    while(temp){
+        cout << temp->value << endl;
+        temp = temp->next;
+    }
+}
+
+void DoublyLinkedList::append(int value){
+    Node* newNode = new Node(value);
+    if(tail){
+        tail->next = newNode;
+        newNode->prev = tail;
+        tail = newNode;
+    } else {
+        head = newNode;
+        tail = newNode;
+    }
+    length++;
+}
+
+void DoublyLinkedList::deleteLast(){
+    if(length > 1){
+        Node* temp = tail;
+        tail = tail->prev;
+        tail->next = nullptr;
+        delete temp;
+        length--;
+    } else if (length == 1) {
+        delete tail;
+        head = nullptr;
+        tail = nullptr;
+        length = 0;
+    } else {
+        return;
+    }
+}
+
+void DoublyLinkedList::prepend(int value){
+    Node* newNode = new Node(value);
+    if(head){
+        newNode->next = head;
+        head = newNode;
+        length++;
+    }
+    else {
+        head = newNode;
+        tail = newNode;
+        length = 1;
+    }
+}
+
+void DoublyLinkedList::deleteFirst(){
+    if(length > 1){
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        length--;
+    } else if (length == 1){
+        delete head;
+        head = nullptr;
+        tail = nullptr;
+        length = 0;
+    } else {
+        return;
+    }
+}
+
+Node* DoublyLinkedList::get(int index){
+    if (index == 0){
+        return head;
+    } else if (index >= length) {
+        return nullptr;
+    } else {
+        Node* temp;
+        if((length / 2) - 1 >= index){
+            // head is closer
+            temp = head;
+            int i = 0;
+            while(i < index){
+                temp = temp->next;
+                i++;
+            }
+        } else {
+            // tail is closer
+            temp = tail;
+            int i = length -1;
+            while(i > index){
+                temp = temp->prev;
+                i--;
+            }
+        }
+        return temp;
+    }
+}
+
+Node* DoublyLinkedList::getHead() {
+    return head;
+}
+
+Node* DoublyLinkedList::getTail(){
+    return tail;
+}
+
+int DoublyLinkedList::getLength(){
+    return length;
+}

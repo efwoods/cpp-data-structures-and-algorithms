@@ -1,24 +1,27 @@
 #pragma once
 
-class Node { 
+class Node {
     public:
         int value;
         Node* next;
+        Node* prev;
+
         Node(int value) {
             this->value = value;
             next = nullptr;
+            prev = nullptr;
         }
-}; 
+};
 
-class LinkedList{
+class DoublyLinkedList{
     private:
         Node* head;
         Node* tail;
         int length;
 
     public:
-        LinkedList(int value);
-        ~LinkedList();
+        DoublyLinkedList(int value);
+        ~DoublyLinkedList();
         void append(int value);
         void deleteLast();
         void prepend(int value);
