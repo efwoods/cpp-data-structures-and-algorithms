@@ -1,0 +1,1 @@
+git add -A && git commit -m 'added doublylinkedlist get all tests passed successfully; updated getHead, getTail, & getLength to return private values rather than printing the values out directly' && git push

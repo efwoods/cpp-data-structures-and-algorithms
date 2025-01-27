@@ -32,7 +32,7 @@ class DoublyLinkedList{
         void deleteNode(int index);
         void reverse();
         void printList();
-        void getHead();
-        void getTail();
-        void getLength();
+        Node* getHead();
+        Node* getTail();
+        int getLength();
 };

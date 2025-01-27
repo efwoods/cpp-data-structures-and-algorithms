@@ -55,3 +55,33 @@ TEST(DoublyLinkedListTest, DeleteFirst){
     DLL->deleteFirst(); // Delete nothing from empty list
     DLL->printList();
 }
+
+TEST(DoublyLinkedListTest, Get){
+    cout << "Testing DoublyLinkedList Get:" << endl;
+    DoublyLinkedList* list = new DoublyLinkedList(1);
+    list->append(2);
+    list->append(3);
+    list->append(4);
+    list->append(5);
+    list->append(6);
+
+    list->printList();
+    // cout << list->get(0)->value << endl;
+
+    Node* nodeResult;
+    for (int i = 0; i < 6; i++){
+        nodeResult = list->get(i);
+        cout << "i: " << i << "\n" <<
+        "Node Value: " << nodeResult->value << "\n" << endl;
+        EXPECT_TRUE(i+1 == nodeResult->value);
+    }
+
+    DoublyLinkedList* emptyList = new DoublyLinkedList(1);
+    emptyList->deleteLast();
+    emptyList->printList(); // List is empty
+    EXPECT_TRUE(emptyList->getHead() == nullptr);
+
+    nodeResult = emptyList->get(7); // get index is out of range; nodeResult should be nullptr;
+
+    EXPECT_TRUE(nodeResult == nullptr);
+}

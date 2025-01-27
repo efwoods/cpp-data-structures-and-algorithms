@@ -77,16 +77,42 @@ void DoublyLinkedList::deleteFirst(){
     }
 }
 
-
-
-void DoublyLinkedList::getHead() {
-    cout << "Head: " << head->value << endl;
+Node* DoublyLinkedList::get(int index){
+    if (index == 0){
+        return head;
+    } else if (index >= length) {
+        return nullptr;
+    } else {
+        Node* temp;
+        if((length / 2) - 1 >= index){
+            // head is closer
+            temp = head;
+            int i = 0;
+            while(i < index){
+                temp = temp->next;
+                i++;
+            }
+        } else {
+            // tail is closer
+            temp = tail;
+            int i = length -1;
+            while(i > index){
+                temp = temp->prev;
+                i--;
+            }
+        }
+        return temp;
+    }
 }
 
-void DoublyLinkedList::getTail(){
-    cout << "Tail: " << tail->value << endl;
+Node* DoublyLinkedList::getHead() {
+    return head;
 }
 
-void DoublyLinkedList::getLength(){
-    cout << "Length: " << length << endl;
+Node* DoublyLinkedList::getTail(){
+    return tail;
+}
+
+int DoublyLinkedList::getLength(){
+    return length;
 }

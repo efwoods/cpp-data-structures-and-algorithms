@@ -191,14 +191,14 @@ void LinkedList::printList() {
     }
 }
 
-void LinkedList::getHead() {
-    cout << "Head: " << head->value << endl;
+Node* LinkedList::getHead() {
+    return head;
 }
 
-void LinkedList::getTail(){
-    cout << "Tail: " << tail->value << endl;
+Node* LinkedList::getTail(){
+    return tail;
 }
 
-void LinkedList::getLength(){
-    cout << "Length: " << length << endl;
+int LinkedList::getLength(){
+    return length;
 }
