@@ -85,3 +85,19 @@ TEST(DoublyLinkedListTest, Get){
 
     EXPECT_TRUE(nodeResult == nullptr);
 }
+
+TEST(DoublyLinkedListTest, Set){
+    DoublyLinkedList* list = new DoublyLinkedList(0);
+    list->deleteFirst();
+    EXPECT_TRUE(list->getHead() == nullptr);
+
+    list->set(0, 1);
+    EXPECT_TRUE(list->get(0)->value == 1);
+
+    list->set(0, 2);
+    EXPECT_TRUE(list->get(0)->value == 2);
+
+    list->set(12, 3);
+    EXPECT_TRUE(list->get(0)->value == 2);
+
+}
