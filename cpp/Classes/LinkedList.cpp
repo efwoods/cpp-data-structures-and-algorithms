@@ -97,7 +97,11 @@ Node* LinkedList::get(int index){
 }
 
 void LinkedList::set(int index, int value){
-    if (index == 0){
+    if (length == 0){
+        head = new Node(value);
+        tail = head; 
+        length++;
+    } else if (index == 0){
         head->value = value;
     } else if (index >= length) {
         return;

@@ -105,6 +105,39 @@ Node* DoublyLinkedList::get(int index){
     }
 }
 
+void DoublyLinkedList::set(int index, int value){
+    if(length == 0){
+        head = new Node(value);
+        tail = head;
+        length++;
+    }
+    else if (index == 0){
+        head->value = value;
+    } else if (index >= length) {
+        return;
+    } else {
+        Node* temp;
+        if((length / 2) - 1 >= index){
+            // head is closer
+            temp = head;
+            int i = 0;
+            while(i < index){
+                temp = temp->next;
+                i++;
+            }
+        } else {
+            // tail is closer
+            temp = tail;
+            int i = length -1;
+            while(i > index){
+                temp = temp->prev;
+                i--;
+            }
+        }
+        temp->value = value;
+    }
+}
+
 Node* DoublyLinkedList::getHead() {
     return head;
 }
