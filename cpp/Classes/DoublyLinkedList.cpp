@@ -51,6 +51,7 @@ void DoublyLinkedList::prepend(int value){
     Node* newNode = new Node(value);
     if(head){
         newNode->next = head;
+        head->prev = newNode;
         head = newNode;
         length++;
     }
@@ -135,6 +136,48 @@ void DoublyLinkedList::set(int index, int value){
             }
         }
         temp->value = value;
+    }
+}
+
+void DoublyLinkedList::insert(int index, int value){
+    if (length == 0) {
+        Node* newNode = new Node(value);
+        head = newNode;
+        tail = newNode;
+        length = 1;
+    } else if(index >= length) {
+        append(value);
+    } else if(index <= 0){
+        prepend(value);
+    } else {
+        Node* temp;
+        int i;
+        if((length / 2) - 1 >= index){
+            // head is closer
+            temp = head;
+            i = 0;
+            while(i < index){
+                temp = temp->next;
+                i++;
+            }
+        } else {
+            // tail is closer
+            temp = tail;
+            i = length - 1;
+            while(i > index){
+                temp = temp->prev;
+                i--;
+            }
+        }
+        Node* newNode = new Node(value);
+        Node* swap = temp->prev;
+        
+        swap->next = newNode;
+        newNode->prev = swap;
+
+        newNode->next = temp;
+        temp->prev = newNode;
+        length++;
     }
 }
 

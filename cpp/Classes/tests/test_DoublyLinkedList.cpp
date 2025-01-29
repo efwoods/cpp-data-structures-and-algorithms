@@ -101,3 +101,56 @@ TEST(DoublyLinkedListTest, Set){
     EXPECT_TRUE(list->get(0)->value == 2);
 
 }
+
+TEST(DoublyLinkedListTest, Insert){
+    DoublyLinkedList* list = new DoublyLinkedList(0);
+    
+    // Set empty list
+    list->deleteFirst();
+    EXPECT_TRUE(list->getHead() == nullptr);
+
+    // Test empty list length less
+    list->insert(-1, 0);
+    EXPECT_TRUE(list->getHead()->value == 0);
+
+    // Set empty list
+    list->deleteFirst();
+    EXPECT_TRUE(list->getHead() == nullptr);
+
+    // Test empty list length equal
+    list->insert(0, 0);
+    EXPECT_TRUE(list->getHead()->value == 0);
+
+    // Set empty list
+    list->deleteFirst();
+    EXPECT_TRUE(list->getHead() == nullptr);
+
+    // Test empty list length greater
+    list->insert(6, 0);
+    EXPECT_TRUE(list->getHead()->value == 0);
+
+
+    // Test list index == length
+    list->insert(1, 1);
+    EXPECT_TRUE(list->get(1)->value == 1);
+
+    // Test list index > length
+    list->insert(15, 2);
+    EXPECT_TRUE(list->get(2)->value == 2);
+
+    // Test list index < length
+    list->insert(-1, -1);
+    EXPECT_TRUE(list->getHead()->value == -1);
+
+    list->printList();
+    // Test insert at index closer to head
+    list->insert(1, 1);
+    EXPECT_TRUE(list->get(1)->value == 1);
+    list->printList();
+
+    // Test insert at index closer to tail
+    list->insert(3, 3);
+    EXPECT_TRUE(list->get(3)->value == 3);
+
+    list->printList();
+}
