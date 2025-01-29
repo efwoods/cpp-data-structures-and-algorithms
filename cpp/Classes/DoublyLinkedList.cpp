@@ -217,21 +217,26 @@ void DoublyLinkedList::deleteNode(int index){
     }
 }
 
-void DoublyLinkedList::reverse() {
-    if (length <= 1){
+void DoublyLinkedList::reverse(){
+    if(length < 2){
         return;
-    } else {
-        Node* first = head;
-        Node* last = tail;
-        int temp;
-        for (int i = 0; i < length / 2; i++){
-            temp = first->value;
-            first->value = last->value;
-            last->value = temp;
-            first = first->next;
-            last = last->prev;
-        }
     }
+    Node* current = head->next;
+    Node* temp;
+    
+    while(current != tail){
+        temp = current->next;
+        current->next = current->prev;
+        current->prev = temp;
+        current = current->prev;
+    }
+    temp = head;
+    head = current;
+    tail = temp;
+    head->next = head->prev;
+    head->prev = nullptr;
+    tail->prev = tail->next;
+    tail->next = nullptr;
 }
 
 Node* DoublyLinkedList::getHead() {

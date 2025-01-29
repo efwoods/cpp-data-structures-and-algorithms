@@ -231,4 +231,6 @@ TEST (DoublyLinkedListTest, Reverse){
     EXPECT_TRUE(list->get(0)->value == 2);
     EXPECT_TRUE(list->get(1)->value == 1);
     EXPECT_TRUE(list->get(2)->value == 0);
+    EXPECT_TRUE(list->getHead()->value == 2);
+    EXPECT_TRUE(list->getTail()->value == 0);
 }
