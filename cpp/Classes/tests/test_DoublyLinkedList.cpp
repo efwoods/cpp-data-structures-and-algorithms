@@ -10,6 +10,12 @@ TEST(DoublyLinkedListTest, Constructor){
     DLL->printList();
 }
 
+TEST(DoublyLinkedListTest, Destructor){
+    DoublyLinkedList* list = new DoublyLinkedList(0);
+    EXPECT_TRUE(list->getLength() == 1);
+    list->~DoublyLinkedList();
+}
+
 TEST(DoublyLinkedListTest, Append){
     DoublyLinkedList* DLL = new DoublyLinkedList(1);
     DLL->append(2);
@@ -215,7 +221,7 @@ TEST(DoublyLinkedListTest, DeleteNode){
     EXPECT_TRUE(list->get(1) == nullptr);
 }
 
-TEST (DoublyLinkedListTest, Reverse){
+TEST(DoublyLinkedListTest, Reverse){
     // Create list and populate
     DoublyLinkedList* list = new DoublyLinkedList(0);
     list->append(1);
@@ -233,4 +239,39 @@ TEST (DoublyLinkedListTest, Reverse){
     EXPECT_TRUE(list->get(2)->value == 0);
     EXPECT_TRUE(list->getHead()->value == 2);
     EXPECT_TRUE(list->getTail()->value == 0);
+}
+
+TEST(DoublyLinkedListTest, IsPalindrome){
+    DoublyLinkedList list(0);
+
+    list.append(1);
+    list.append(2);
+
+    EXPECT_TRUE(list.get(0)->value == 0);
+    EXPECT_TRUE(list.get(1)->value == 1);
+    EXPECT_TRUE(list.get(2)->value == 2);
+
+    // Test Non-Palindrome
+    EXPECT_FALSE(list.isPalindrome());
+
+    // Populate palindrome
+    list.set(2, 0);
+    EXPECT_TRUE(list.get(0)->value == 0);
+    EXPECT_TRUE(list.get(1)->value == 1);
+    EXPECT_TRUE(list.get(2)->value == 0);
+
+    // Test Palindrome
+    EXPECT_TRUE(list.isPalindrome());
+
+    list.deleteLast();
+    list.deleteLast();
+
+    // Test singleton list
+    EXPECT_TRUE(list.getLength() == 1);
+    EXPECT_TRUE(list.isPalindrome());
+
+    // Test empty list
+    list.deleteFirst();
+    EXPECT_TRUE(list.getLength() == 0);
+    EXPECT_TRUE(list.isPalindrome());
 }

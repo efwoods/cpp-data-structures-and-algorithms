@@ -31,6 +31,7 @@ class DoublyLinkedList{
         void insert(int index, int value);
         void deleteNode(int index);
         void reverse();
+        bool isPalindrome();
         void printList();
         Node* getHead();
         Node* getTail();

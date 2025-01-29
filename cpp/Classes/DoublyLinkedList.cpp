@@ -9,6 +9,15 @@ DoublyLinkedList::DoublyLinkedList(int value){
     length = 1;
 }
 
+DoublyLinkedList::~DoublyLinkedList(){
+    Node* temp = head;
+    while(head){
+        head = head->next;
+        delete temp;
+        temp = head;
+    }
+}
+
 void DoublyLinkedList::printList() {
     Node* temp = head;
     while(temp){
@@ -237,6 +246,23 @@ void DoublyLinkedList::reverse(){
     head->prev = nullptr;
     tail->prev = tail->next;
     tail->next = nullptr;
+}
+
+bool DoublyLinkedList::isPalindrome(){
+    if (length < 2){
+        return true;
+    }
+    Node* forwardNode = head;
+    Node* backwardNode = tail;
+
+    for(int i = 0; i < length / 2; i++){
+        if(forwardNode->value != backwardNode->value){
+            return false;
+        }
+        forwardNode = forwardNode->next;
+        backwardNode = backwardNode->prev;
+    }
+    return true;
 }
 
 Node* DoublyLinkedList::getHead() {
