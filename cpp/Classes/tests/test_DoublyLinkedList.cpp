@@ -214,3 +214,21 @@ TEST(DoublyLinkedListTest, DeleteNode){
     EXPECT_TRUE(list->get(0)->value == 1);
     EXPECT_TRUE(list->get(1) == nullptr);
 }
+
+TEST (DoublyLinkedListTest, Reverse){
+    // Create list and populate
+    DoublyLinkedList* list = new DoublyLinkedList(0);
+    list->append(1);
+    list->append(2);
+
+    EXPECT_TRUE(list->get(0)->value == 0);
+    EXPECT_TRUE(list->get(1)->value == 1);
+    EXPECT_TRUE(list->get(2)->value == 2);
+
+    // Test Reverse
+    list->reverse();
+
+    EXPECT_TRUE(list->get(0)->value == 2);
+    EXPECT_TRUE(list->get(1)->value == 1);
+    EXPECT_TRUE(list->get(2)->value == 0);
+}
