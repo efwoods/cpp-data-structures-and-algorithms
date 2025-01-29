@@ -181,6 +181,42 @@ void DoublyLinkedList::insert(int index, int value){
     }
 }
 
+void DoublyLinkedList::deleteNode(int index){
+    if (length == 0){
+        return;
+    } else if (index >= length - 1) {
+        deleteLast();
+    } else if (index <= 0){
+        deleteFirst();
+    } else {
+        int i = 0;
+        Node* temp;
+        if((length / 2) - 1 >= index){
+            // head is closer
+            temp = head;
+            i = 0;
+            while(i < index){
+                temp = temp->next;
+                i++;
+            }
+        } else {
+            // tail is closer
+            temp = tail;
+            i = length - 1;
+            while(i > index){
+                temp = temp->prev;
+                i--;
+            }
+        }
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
+        temp->next = nullptr;
+        temp->prev = nullptr;
+        delete temp;
+        length--;
+    }
+}
+
 Node* DoublyLinkedList::getHead() {
     return head;
 }
