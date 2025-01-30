@@ -9,7 +9,7 @@
                 "-g",
                 "-o",
                 "${fileBasenameNoExtension}", // output binary name
-                "../DoublyLinkedList.cpp", // Implementation file
+                "../Stack/Stack.cpp", // Implementation file
                 "${fileBasename}", // Compile the test file, 
                 "-lgtest", 
                 "-lgtest_main", 
