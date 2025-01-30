@@ -19,4 +19,9 @@ class Queue {
 
     public:
         Queue(int value);
+        ~Queue();
+        Node* getFirst();
+        Node* getLast();
+        int getLength();
+        void printQueue();
 };
