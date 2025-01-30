@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../DoublyLinkedList.h"
+#include "../DoublyLinkedList/DoublyLinkedList.h"
 #include <iostream>
 
 using namespace std;

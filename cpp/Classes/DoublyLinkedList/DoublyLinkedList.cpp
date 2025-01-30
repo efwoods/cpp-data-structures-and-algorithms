@@ -303,9 +303,6 @@ void DoublyLinkedList::swapPairs(){
     }
 }
 
-
-
-
 Node* DoublyLinkedList::getHead() {
     return head;
 }
