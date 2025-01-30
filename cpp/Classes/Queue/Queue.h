@@ -22,6 +22,7 @@ class Queue {
         ~Queue();
         Node* getFirst();
         Node* getLast();
+        void enqueue(int value);
         int getLength();
         void printQueue();
 };

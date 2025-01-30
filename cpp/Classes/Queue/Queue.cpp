@@ -29,3 +29,16 @@ void Queue::printQueue(){
         temp = temp->next;
     }
 }
+
+void Queue::enqueue(int value){
+    Node* newNode = new Node(value);
+    if (length == 0){
+        first = newNode;
+        last = newNode;
+        length = 1;
+    } else {
+        last->next = newNode;
+        last = newNode;
+        length++;
+    }
+}

@@ -28,3 +28,13 @@ TEST(QueueTest, PrintQueue){
         queue->printQueue();
     });
 }
+
+TEST(QueueTest, Enqueue){
+    Queue* queue = new Queue(0);
+    EXPECT_NO_THROW({
+        queue->enqueue(1);
+    });
+    EXPECT_TRUE(queue->getFirst()->value == 0);
+    EXPECT_TRUE(queue->getLast()->value == 1);
+    EXPECT_TRUE(queue->getLength() == 2);
+}
