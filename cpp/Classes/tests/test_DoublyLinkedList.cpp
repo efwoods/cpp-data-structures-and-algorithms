@@ -278,19 +278,40 @@ TEST(DoublyLinkedListTest, IsPalindrome){
 
 TEST(DoublyLinkedListTest, SwapPairs){
     DoublyLinkedList* list = new DoublyLinkedList(0);
+    cout << "*** Testing Length 1 ***" << endl;
     list->swapPairs();
     EXPECT_TRUE(list->getLength() == 1);
 
+    cout << "*** Testing Length 2 ***" << endl;
     list->append(1);
     list->swapPairs();
     EXPECT_TRUE(list->getLength() == 2);
 
+    cout << "*** Testing Length 3 ***" << endl;
     list->set(0, 0);
     list->set(1, 1);
     list->append(2);
     list->swapPairs();
     EXPECT_TRUE(list->getLength() == 3);
 
+    // Ensure correct head
+    Node *test_head = list->getHead();
+    EXPECT_TRUE(test_head->next == list->get(1));
+    EXPECT_TRUE(test_head->prev == nullptr);
+    EXPECT_TRUE(test_head->value == list->get(0)->value);
+
+    // Ensure correct tail
+    Node *test_tail = list->getTail();
+    EXPECT_TRUE(test_tail->next == nullptr);
+    EXPECT_TRUE(test_tail->prev == list->get(1));
+    EXPECT_TRUE(test_tail->value == list->get(2)->value);
+
+    // Ensure Correct Values
+    EXPECT_TRUE(list->get(0)->value == 1);
+    EXPECT_TRUE(list->get(1)->value == 0);
+    EXPECT_TRUE(list->get(2)->value == 2);
+
+    cout << "*** Testing Length 4 ***" << endl;
     list->set(0, 0);
     list->set(1, 1);
     list->set(2, 2);
@@ -298,6 +319,25 @@ TEST(DoublyLinkedListTest, SwapPairs){
     list->swapPairs();
     EXPECT_TRUE(list->getLength() == 4);
 
+    // Ensure correct head
+    test_head = list->getHead();
+    EXPECT_TRUE(test_head->next == list->get(1));
+    EXPECT_TRUE(test_head->prev == nullptr);
+    EXPECT_TRUE(test_head->value == list->get(0)->value);
+
+    // Ensure correct tail
+    test_tail = list->getTail();
+    EXPECT_TRUE(test_tail->next == nullptr);
+    EXPECT_TRUE(test_tail->prev == list->get(2));
+    EXPECT_TRUE(test_tail->value == list->get(3)->value);
+
+    // Ensure correct values
+    EXPECT_TRUE(list->get(0)->value == 1);
+    EXPECT_TRUE(list->get(1)->value == 0);
+    EXPECT_TRUE(list->get(2)->value == 3);
+    EXPECT_TRUE(list->get(3)->value == 2);
+
+    cout << "*** Testing Length 5 ***" << endl;
     list->set(0, 0);
     list->set(1, 1);
     list->set(2, 2);
@@ -306,6 +346,26 @@ TEST(DoublyLinkedListTest, SwapPairs){
     list->swapPairs();
     EXPECT_TRUE(list->getLength() == 5);
 
+        // Ensure correct head
+    test_head = list->getHead();
+    EXPECT_TRUE(test_head->next == list->get(1));
+    EXPECT_TRUE(test_head->prev == nullptr);
+    EXPECT_TRUE(test_head->value == list->get(0)->value);
+
+    // Ensure correct tail
+    test_tail = list->getTail();
+    EXPECT_TRUE(test_tail->next == nullptr);
+    EXPECT_TRUE(test_tail->prev == list->get(3));
+    EXPECT_TRUE(test_tail->value == list->get(4)->value);
+
+    // Ensure correct values
+    EXPECT_TRUE(list->get(0)->value == 1);
+    EXPECT_TRUE(list->get(1)->value == 0);
+    EXPECT_TRUE(list->get(2)->value == 3);
+    EXPECT_TRUE(list->get(3)->value == 2);
+    EXPECT_TRUE(list->get(4)->value == 4);
+
+    cout << "*** Testing Length 6 ***" << endl;
     list->set(0, 0);
     list->set(1, 1);
     list->set(2, 2);
@@ -315,6 +375,27 @@ TEST(DoublyLinkedListTest, SwapPairs){
     list->swapPairs();
     EXPECT_TRUE(list->getLength() == 6);
 
+    // Ensure correct head
+    test_head = list->getHead();
+    EXPECT_TRUE(test_head->next == list->get(1));
+    EXPECT_TRUE(test_head->prev == nullptr);
+    EXPECT_TRUE(test_head->value == list->get(0)->value);
+
+    // Ensure correct tail
+    test_tail = list->getTail();
+    EXPECT_TRUE(test_tail->next == nullptr);
+    EXPECT_TRUE(test_tail->prev == list->get(4));
+    EXPECT_TRUE(test_tail->value == list->get(5)->value);
+
+    // Ensure correct values
+    EXPECT_TRUE(list->get(0)->value == 1);
+    EXPECT_TRUE(list->get(1)->value == 0);
+    EXPECT_TRUE(list->get(2)->value == 3);
+    EXPECT_TRUE(list->get(3)->value == 2);
+    EXPECT_TRUE(list->get(4)->value == 5);
+    EXPECT_TRUE(list->get(5)->value == 4);
+
+    cout << "*** Testing Length 7 ***" << endl;
     list->set(0, 0);
     list->set(1, 1);
     list->set(2, 2);
@@ -325,4 +406,24 @@ TEST(DoublyLinkedListTest, SwapPairs){
     list->swapPairs();
     EXPECT_TRUE(list->getLength() == 7);
 
+    // Ensure correct head
+    test_head = list->getHead();
+    EXPECT_TRUE(test_head->next == list->get(1));
+    EXPECT_TRUE(test_head->prev == nullptr);
+    EXPECT_TRUE(test_head->value == list->get(0)->value);
+
+    // Ensure correct tail
+    test_tail = list->getTail();
+    EXPECT_TRUE(test_tail->next == nullptr);
+    EXPECT_TRUE(test_tail->prev == list->get(5));
+    EXPECT_TRUE(test_tail->value == list->get(6)->value);
+
+    // Ensure correct values
+    EXPECT_TRUE(list->get(0)->value == 1);
+    EXPECT_TRUE(list->get(1)->value == 0);
+    EXPECT_TRUE(list->get(2)->value == 3);
+    EXPECT_TRUE(list->get(3)->value == 2);
+    EXPECT_TRUE(list->get(4)->value == 5);
+    EXPECT_TRUE(list->get(5)->value == 4);
+    EXPECT_TRUE(list->get(6)->value == 6);
 }

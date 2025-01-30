@@ -265,112 +265,45 @@ bool DoublyLinkedList::isPalindrome(){
     return true;
 }
 
-int DoublyLinkedList::numSwapsPerSide(int length){
-    int numSwapsPerSide;
-    if((length / 2) % 2 == 0){ // 1 center node
-        // There are two nodes per pair & two sides;
-        // Removing the number of central nodes
-        // and dividing by 4;
-        numSwapsPerSide = (length - 1) / 4;
-    } else { // 3 center nodes
-        numSwapsPerSide = (length - 3) / 4;
-    }
-    return numSwapsPerSide;
-}
-
 void DoublyLinkedList::swapPairs(){
     if(length < 2){
         return;
     }
-    // check for even or odd length
-    if (length % 2 == 1){
-        // odd; check for even or odd remainder
-        int numSwaps = numSwapsPerSide(length);
-        Node* temp;
-        Node* first = head;
-        Node* second = head->next;
-        Node* tail_temp;
-        Node* ultimate = tail;
-        Node* penultimate = tail->next;
-        for(int i = 0; i < numSwaps; i++){
-            // handling before the midpoint
-            temp = first;
-            first->next = second->next;
-            first->prev = second->prev;
-            second->next = temp->next;
-            second->prev = temp->prev;
+    Node* first = head;
+    Node* second = first->next;
+    Node* previousNode;
+    for(int i = 0; i < length/2; i++){
+        Node* temp = new Node(0);
+        temp->next = first->next;
+        temp->prev = first->prev;
+        first->next = second->next;
+        first->prev = second;
+        second->prev = temp->prev;
+        second->next = first;
+        if(i != 0){
+            second->prev = previousNode;
+            previousNode->next = second;
+        }
+        if (i == 0){
+            head = second;
+        }
+
+        if(i != length/2 -1){ // not at the end
+            previousNode = first;
             first = first->next;
             second = first->next;
-            
-            // handling after the midpoint
-            tail_temp = ultimate;
-            ultimate->prev = penultimate->prev;
-            ultimate->next = penultimate->next;
-            penultimate->next = tail_temp->next;
-            penultimate->prev = tail_temp->prev;
-            ultimate = ultimate->prev;
-            penultimate = ultimate->prev;
+        } else {
+            if (length%2 == 0){ // if even
+                tail = first;
+            } else { // if odd
+                tail->prev = first;
+            }
         }
-    } else {
-        // even; swap two from head to tail
-        Node* first = head;
-        Node* second = first->next;
-        for(int i = 0; i < length/2; i++){
-            Node* temp = new Node(first->value);
-            temp->next = first->next;
-            temp->prev = first->prev;
-
-            first->next = second->next;
-            first->prev = second;
-            second->prev = temp->prev;
-            second->next = first;
-
-            // if (i == 0){ // save head information
-            //     Node* head_pointer = new Node(second->value);
-            //     head_pointer->prev = second; // this is reserving the address of the head; this will be updated to nullptr in the head
-            //     head_pointer->next = second->next; // points at the second node
-            // }
-
-            // if (first->next == nullptr){
-            //     // first is at tail; update the tail
-            //     tail->prev = first->prev;
-            //     tail = first;
-
-            //     // update the head;
-            //     head->next = head_pointer->next;
-            //     head = head_pointer->prev;
-            //     delete head_pointer;
-            //     delete temp;
-            //     break;
-            // } else {
-            //     first = first->next;
-            //     second = first->next;
-            //     delete temp;
-            // }
-
-            // store potential tail
-            // temp->next = first->next;
-            // temp->prev = first->prev;
-
-            // first = first->next; // move to the next position
-
-            // if(i == 0){ // handle head
-            //     head->prev = second->prev;
-            //     head->next = second->next;
-            // }
-
-            // if(first == nullptr){ // handle tail
-            //     tail->next = temp->next;
-            //     tail->prev = temp->prev;
-            //     delete temp;
-            //     break;
-            // } else { // continue to next pair to swap
-            //     second = first->next;
-            //     delete temp;
-            // }
-        }
+        delete temp;
     }
 }
+
+
 
 
 Node* DoublyLinkedList::getHead() {
