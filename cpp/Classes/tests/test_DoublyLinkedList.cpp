@@ -275,3 +275,54 @@ TEST(DoublyLinkedListTest, IsPalindrome){
     EXPECT_TRUE(list.getLength() == 0);
     EXPECT_TRUE(list.isPalindrome());
 }
+
+TEST(DoublyLinkedListTest, SwapPairs){
+    DoublyLinkedList* list = new DoublyLinkedList(0);
+    list->swapPairs();
+    EXPECT_TRUE(list->getLength() == 1);
+
+    list->append(1);
+    list->swapPairs();
+    EXPECT_TRUE(list->getLength() == 2);
+
+    list->set(0, 0);
+    list->set(1, 1);
+    list->append(2);
+    list->swapPairs();
+    EXPECT_TRUE(list->getLength() == 3);
+
+    list->set(0, 0);
+    list->set(1, 1);
+    list->set(2, 2);
+    list->append(3);
+    list->swapPairs();
+    EXPECT_TRUE(list->getLength() == 4);
+
+    list->set(0, 0);
+    list->set(1, 1);
+    list->set(2, 2);
+    list->set(3, 3);
+    list->append(4);
+    list->swapPairs();
+    EXPECT_TRUE(list->getLength() == 5);
+
+    list->set(0, 0);
+    list->set(1, 1);
+    list->set(2, 2);
+    list->set(3, 3);
+    list->set(4, 4);
+    list->append(5);
+    list->swapPairs();
+    EXPECT_TRUE(list->getLength() == 6);
+
+    list->set(0, 0);
+    list->set(1, 1);
+    list->set(2, 2);
+    list->set(3, 3);
+    list->set(4, 4);
+    list->set(5, 5);
+    list->append(6);
+    list->swapPairs();
+    EXPECT_TRUE(list->getLength() == 7);
+
+}
