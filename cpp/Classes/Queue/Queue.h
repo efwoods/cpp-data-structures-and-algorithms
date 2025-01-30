@@ -1,25 +1,22 @@
 #pragma once
 
-class Node{
+class Node {
     public:
         int value;
         Node* next;
+
         Node(int value){
             this->value = value;
             next = nullptr;
         }
 };
 
-class Stack{
+class Queue {
     private:
-        Node* top;
-        int height;
+        Node* first;
+        Node* last;
+        int length;
 
     public:
-    Stack(int value);
-    void printStack();
-    Node* getTop();
-    int getHeight();
-    void push(int value);
-    int pop();
+        Queue(int value);
 };
