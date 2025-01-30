@@ -265,6 +265,44 @@ bool DoublyLinkedList::isPalindrome(){
     return true;
 }
 
+void DoublyLinkedList::swapPairs(){
+    if(length < 2){
+        return;
+    }
+    Node* first = head;
+    Node* second = first->next;
+    Node* previousNode;
+    for(int i = 0; i < length/2; i++){
+        Node* temp = new Node(0);
+        temp->next = first->next;
+        temp->prev = first->prev;
+        first->next = second->next;
+        first->prev = second;
+        second->prev = temp->prev;
+        second->next = first;
+        if(i != 0){
+            second->prev = previousNode;
+            previousNode->next = second;
+        }
+        if (i == 0){
+            head = second;
+        }
+
+        if(i != length/2 -1){ // not at the end
+            previousNode = first;
+            first = first->next;
+            second = first->next;
+        } else {
+            if (length%2 == 0){ // if even
+                tail = first;
+            } else { // if odd
+                tail->prev = first;
+            }
+        }
+        delete temp;
+    }
+}
+
 Node* DoublyLinkedList::getHead() {
     return head;
 }

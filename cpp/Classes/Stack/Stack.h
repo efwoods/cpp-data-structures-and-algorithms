@@ -20,4 +20,9 @@ class Stack{
     void printStack();
     Node* getTop();
     int getHeight();
+    void push(int value);
+    int pop();
+    //queue
+    //enqueue
+    //deque
 };
