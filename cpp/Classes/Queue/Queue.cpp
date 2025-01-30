@@ -1,5 +1,6 @@
 #include "Queue.h"
 #include <iostream>
+#include <limits.h>
 
 using namespace std;
 
@@ -41,4 +42,21 @@ void Queue::enqueue(int value){
         last = newNode;
         length++;
     }
+}
+
+int Queue::dequeue(){
+    if (length == 0){
+        return INT_MIN;
+    }
+    Node* temp = first;
+    int dequeueValue = first->value;
+    if (length == 1){
+        first = nullptr;
+        last = nullptr;
+        delete temp;
+    } else {
+        first = first->next;
+    }
+    length--;
+    return dequeueValue;
 }
