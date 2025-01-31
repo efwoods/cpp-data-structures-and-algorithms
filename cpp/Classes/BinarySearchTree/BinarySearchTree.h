@@ -19,4 +19,5 @@ class BinarySearchTree{
     public:
         BinarySearchTree();
         bool insert(int value);
+        bool contains(int value);
 };

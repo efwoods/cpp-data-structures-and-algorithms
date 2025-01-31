@@ -32,3 +32,19 @@ bool BinarySearchTree::insert(int value){
         }
     }
 }
+
+bool BinarySearchTree::contains(int value){
+    if (root == nullptr){return false;}
+    Node* temp = root;
+    while(temp != nullptr){
+        if(temp->value == value){
+            return true;
+        }
+        if(value < temp->value){ // search left
+            temp = temp->left;
+        } else { // search right
+            temp = temp->right;
+        }
+    }
+    return false;
+}
