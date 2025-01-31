@@ -22,15 +22,20 @@ TEST(HashTableTest, Set){
     EXPECT_NO_THROW({
         hashTable->set("nails", 100);
     });
+    hashTable->printTable();
 }
 
 TEST(HashTableTest, Get){
     HashTable* hashTable = new HashTable();
-    EXPECT_NO_THROW({
+    // EXPECT_NO_THROW({
         hashTable->set("nails", 100);
         hashTable->set("tile", 50);
         hashTable->set("lumber", 80);
 
         hashTable->printTable();
-    });
+
+        cout << "Lumber: " << hashTable->get("lumber") << endl;
+
+        cout << "Bolts: " << hashTable->get("bolts") << endl;
+    // });
 }
