@@ -29,4 +29,5 @@ class HashTable{
         void printTable();
         void set(string key, int value);
         int get(string key);
+        vector<string> keys();
 };

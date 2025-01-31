@@ -65,3 +65,16 @@ TEST(HashTableTest, LectureExampleTest){
     cout << "Lumber: " << myHashTable->get("lumber") << endl;
     cout << "Bolts: " << myHashTable->get("bolts") << endl;
 }
+
+TEST(HashTableTest, Keys){
+    HashTable* hashTable = new HashTable();
+
+    hashTable->set("nails", 100);
+    hashTable->set("tile", 50);
+    hashTable->set("lumber", 80);
+
+    vector<string> allKeys = hashTable->keys();
+    EXPECT_TRUE(allKeys[0] == "nails");
+    EXPECT_TRUE(allKeys[1] == "tile");
+    EXPECT_TRUE(allKeys[2] == "lumber");
+}
