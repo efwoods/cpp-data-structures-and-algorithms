@@ -31,4 +31,5 @@ class HashTable{
         int get(string key);
         vector<string> keys();
         bool itemInCommon(vector<int> vect1, vector<int> vect2);
+        vector<vector<string>> groupAnagrams(const vector<string>& strings);
 };

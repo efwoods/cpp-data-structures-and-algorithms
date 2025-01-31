@@ -1,6 +1,7 @@
 #include "HashTable.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -79,7 +80,7 @@ vector<string> HashTable::keys() {
 bool HashTable::itemInCommon(vector<int> vect1, vector<int> vect2){
     unordered_map<int, bool> intMap;
     for(auto i : vect1){
-        intMap.insert({i, true});
+        intMap.emplace(i, true);
     }
     for(auto i : vect2){
         if(intMap[i]) return true;
