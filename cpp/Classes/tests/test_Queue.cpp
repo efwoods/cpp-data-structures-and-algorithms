@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "../Queue/Queue.h"
 #include <iostream>
+#include <limits.h>
 
 using namespace std;
 
@@ -51,6 +52,11 @@ TEST(QueueTest, dequeue){
     });
     EXPECT_TRUE(dequeueResult == 0);
 
+    cout << "*** Test Empty Queue ***" << endl;
+    EXPECT_TRUE(queue->dequeue() == INT_MIN);
+
+
+    cout << "*** Test Two-element Queue ***" << endl;
     EXPECT_NO_THROW({
         queue->enqueue(0);
         queue->enqueue(1);
@@ -58,4 +64,5 @@ TEST(QueueTest, dequeue){
 
     EXPECT_TRUE(queue->dequeue() == 0);
     EXPECT_TRUE(queue->dequeue() == 1);
+    EXPECT_TRUE(queue->dequeue() == INT_MIN);
 }

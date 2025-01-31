@@ -53,10 +53,10 @@ int Queue::dequeue(){
     if (length == 1){
         first = nullptr;
         last = nullptr;
-        delete temp;
     } else {
         first = first->next;
     }
+    delete temp;
     length--;
     return dequeueValue;
 }
