@@ -9,3 +9,10 @@ TEST(HashTableTest, Constructor){
         HashTable* hashtable = new HashTable();
     });
 }
+
+TEST(HashTableTest, Hash){
+    HashTable* hashTable = new HashTable();
+    string key = "key";
+    int keyHash = hashTable->hash(key);
+    EXPECT_TRUE(keyHash == 0);
+}

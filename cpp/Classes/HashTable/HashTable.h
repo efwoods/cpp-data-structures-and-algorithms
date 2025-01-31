@@ -1,4 +1,7 @@
 #pragma once
+#include <string>
+
+using namespace std;
 
 class Node{
     public:
@@ -19,4 +22,5 @@ class HashTable{
     public:
         ~HashTable();
         void printTable();
+        int hash(string key);
 };

@@ -1,5 +1,6 @@
 #include "HashTable.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -14,4 +15,13 @@ void HashTable::printTable(){
             }
         }
     }
+}
+
+int HashTable::hash(string key){
+    int hash = 0;
+    for(int i = 0; i < key.length(); i++){
+        int asciiValue = int (key[i]);
+        hash = (hash + asciiValue * 23) % SIZE;
+    }
+    return hash;
 }
