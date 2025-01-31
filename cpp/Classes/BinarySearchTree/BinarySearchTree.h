@@ -13,9 +13,10 @@ class Node{
 };
 
 class BinarySearchTree{
-    private:
+    public:
         Node* root;
     
     public:
         BinarySearchTree();
+        bool insert(int value);
 };
