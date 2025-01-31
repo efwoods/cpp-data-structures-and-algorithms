@@ -30,4 +30,5 @@ class HashTable{
         void set(string key, int value);
         int get(string key);
         vector<string> keys();
+        bool itemInCommon(vector<int> vect1, vector<int> vect2);
 };
