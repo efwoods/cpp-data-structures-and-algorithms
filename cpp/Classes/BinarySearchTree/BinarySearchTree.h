@@ -13,9 +13,13 @@ class Node{
 };
 
 class BinarySearchTree{
-    private:
+    public:
         Node* root;
     
     public:
         BinarySearchTree();
+        ~BinarySearchTree();
+        bool insert(int value);
+        bool contains(int value);
+        void destroy(Node* currentNode);
 };
