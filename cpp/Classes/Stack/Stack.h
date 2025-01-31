@@ -22,7 +22,4 @@ class Stack{
     int getHeight();
     void push(int value);
     int pop();
-    //queue
-    //enqueue
-    //deque
 };
