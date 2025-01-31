@@ -6,9 +6,9 @@ using namespace std;
 class Node{
     public:
         int value;
-        int key;
+        string key;
         Node* next;
-        Node(int key, int value){
+        Node(string key, int value){
             this->key = key;
             this->value = value;
         }
@@ -23,4 +23,6 @@ class HashTable{
         ~HashTable();
         void printTable();
         int hash(string key);
+        void set(string key, int value);
+        int get(string key);
 };
