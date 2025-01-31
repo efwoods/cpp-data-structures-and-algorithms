@@ -42,7 +42,7 @@ void HashTable::set(string key, int value){
     int index = hash(key);
     Node* newNode = new Node(key, value);
     if (dataMap[index] == nullptr){
-        dataMap[index] == newNode;
+        dataMap[index] = newNode;
     } else {
         Node* temp = dataMap[index];
         while(temp->next != nullptr){
@@ -56,7 +56,9 @@ int HashTable::get(string key){
     int index = hash(key);
     Node* temp = dataMap[index];
     while (temp != nullptr) {
-        if (temp->key == key) return temp->value;
+        if (temp->key == key) {
+            return temp->value;
+        }
         temp = temp->next;
     }
     return 0;
