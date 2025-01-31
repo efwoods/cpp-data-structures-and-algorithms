@@ -78,3 +78,10 @@ TEST(HashTableTest, Keys){
     EXPECT_TRUE(allKeys[1] == "tile");
     EXPECT_TRUE(allKeys[2] == "lumber");
 }
+
+TEST(HashTableTest, ItemInCommonTest){
+    vector<int> vector1 = {1, 2, 3};
+    vector<int> vector2 = {4, 5, 2};
+    HashTable* hashTable = new HashTable();
+    EXPECT_TRUE(hashTable->itemInCommon(vector1, vector2));
+}
