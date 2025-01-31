@@ -45,3 +45,21 @@ TEST(BinarySearchTreeTest, Contains){
     cout << "*** Test Binary Search Tree Value is Contained ***" << endl;
     EXPECT_TRUE(bst->contains(27));
 }
+
+TEST(BinarySearchTreeTest, Destroy){
+    BinarySearchTree* bst = new BinarySearchTree();
+    EXPECT_NO_THROW({
+        bst->insert(2);
+        bst->insert(1);
+        bst->insert(3);
+    });
+
+    EXPECT_NO_THROW({
+        bst->destroy(bst->root);
+    });
+}
+
+TEST(BinarySearchTreeTest, Deconstructor){
+    BinarySearchTree* bst = new BinarySearchTree();
+    EXPECT_NO_THROW(bst->~BinarySearchTree());
+}

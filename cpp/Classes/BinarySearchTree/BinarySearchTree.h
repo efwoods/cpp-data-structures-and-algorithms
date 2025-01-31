@@ -18,6 +18,8 @@ class BinarySearchTree{
     
     public:
         BinarySearchTree();
+        ~BinarySearchTree();
         bool insert(int value);
         bool contains(int value);
+        void destroy(Node* currentNode);
 };

@@ -5,6 +5,9 @@ using namespace std;
 BinarySearchTree::BinarySearchTree(){
     root = nullptr;
 }
+BinarySearchTree::~BinarySearchTree(){
+    destroy(root);
+}
 
 bool BinarySearchTree::insert(int value){
     Node* newNode = new Node(value);
@@ -46,4 +49,17 @@ bool BinarySearchTree::contains(int value){
         }
     }
     return false;
+}
+
+void BinarySearchTree::destroy(Node* currentNode){
+    if (currentNode == nullptr){
+        return;
+    }
+    if (currentNode->left) {
+        destroy(currentNode->left);
+    }
+    if (currentNode->right){
+        destroy(currentNode->right);
+    }
+    delete currentNode;
 }
