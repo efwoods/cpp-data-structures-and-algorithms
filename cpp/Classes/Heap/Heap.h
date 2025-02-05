@@ -23,6 +23,6 @@ class Heap{
     public:
         void printHeap();
         void insert(int value);
-        int remove(int value);
+        int remove();
         void sinkDown(int value);
 };

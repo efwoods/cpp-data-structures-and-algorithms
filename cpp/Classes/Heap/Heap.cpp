@@ -51,7 +51,7 @@ void Heap::sinkDown(int index){
     }
 }
 
-int Heap::remove(int value){
+int Heap::remove(){
     if (heap.empty()){
         return INT_MIN;
     }
