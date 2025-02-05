@@ -10,9 +10,11 @@ class Heap{
         int leftChild(int index);
         int rightChild(int index);
         void swap(int index1, int index2);
+        FRIEND_TEST(HeapTest, FriendTest);
 
     public:
         void printHeap();
         void insert(int value);
-        void remove(int value);
+        int remove(int value);
+        void sinkDown(int value);
 };
