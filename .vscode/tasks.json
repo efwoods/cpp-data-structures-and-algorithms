@@ -9,7 +9,7 @@
                 "-g",
                 "-o",
                 "${fileBasenameNoExtension}", // output binary name
-                "../Graph/Graph.cpp", // Implementation file
+                "../Heap/Heap.cpp", // Implementation file
                 "${fileBasename}", // Compile the test file, 
                 "-lgtest", 
                 "-lgtest_main", 

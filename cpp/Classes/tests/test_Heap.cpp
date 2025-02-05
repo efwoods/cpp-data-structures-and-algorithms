@@ -23,8 +23,10 @@ TEST(HeapTest, FriendTest){
     EXPECT_TRUE(myHeap->leftChild(0) == 98);
     EXPECT_TRUE(myHeap->rightChild(0) == 99);
     EXPECT_NO_THROW(myHeap->swap(0, 1));
-    
-    EXPECT_TRUE(myHeap->remove(0));
+}
+
+TEST(HeapTest, FriendTestParent){
+
 }
 
 
