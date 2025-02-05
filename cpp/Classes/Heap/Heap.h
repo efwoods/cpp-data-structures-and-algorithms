@@ -13,4 +13,6 @@ class Heap{
 
     public:
         void printHeap();
+        void insert(int value);
+        void remove(int value);
 };
