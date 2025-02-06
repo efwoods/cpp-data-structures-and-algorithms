@@ -25,8 +25,10 @@ class BinarySearchTree{
         bool rContains(Node* currentNode, int value);
         bool rContains(int value);
         Node* rInsert(Node* currentNode, int value);
-        void rInsert(int value){
-            rInsert(root, value);
-        }
+        void rInsert(int value);
+        Node* deleteNode(Node* currentNode, int value);
+        void deleteNode(int value);
+        int minValue(Node* currentNode);
+        Node* getRoot();
 };
 

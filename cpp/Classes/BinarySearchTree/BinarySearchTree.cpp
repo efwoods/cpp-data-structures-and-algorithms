@@ -79,3 +79,53 @@ bool BinarySearchTree::rContains(Node* currentNode, int value){
 bool BinarySearchTree::rContains(int value){
     return rContains(root, value);
 }
+
+Node* BinarySearchTree::deleteNode(Node* currentNode, int value){
+    if(currentNode == nullptr){
+        return nullptr;
+    }
+    if(value < currentNode->value){
+        currentNode->left = deleteNode(currentNode->left, value);
+    } else if(value > currentNode->value){
+        currentNode->right = deleteNode(currentNode->right, value);
+    } else {
+        // delete current node with no leafs
+        if(currentNode->left == nullptr && currentNode->right == nullptr){
+            delete(currentNode);
+            return nullptr;
+        } else if(currentNode->left == nullptr){
+            // delete current node with left leaf
+            Node* temp = currentNode->right;
+            delete(currentNode);
+            return temp;
+        } else if (currentNode->right == nullptr){
+            // delete current node with right leaf  
+            Node* temp = currentNode->left;
+            delete(currentNode);
+            return temp;
+        } else {
+            // delete current node with both leafs
+            int minimumValue = minValue(currentNode->right);
+            currentNode->value = minimumValue;
+            currentNode->right = deleteNode(currentNode->right, minimumValue);
+        }
+    }
+
+    return currentNode;
+
+}
+
+void BinarySearchTree::deleteNode(int value){
+    root = deleteNode(root, value);
+}
+
+int BinarySearchTree::minValue(Node* currentNode){
+    while (currentNode->left != nullptr){
+        currentNode = currentNode->left;
+    }
+    return currentNode->value;
+}
+
+Node* BinarySearchTree::getRoot(){
+    return root;
+}

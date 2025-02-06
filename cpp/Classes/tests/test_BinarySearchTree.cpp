@@ -83,3 +83,55 @@ TEST(BinarySearchTreeTest, rContains){
 
     
 }
+
+TEST(BinarySearchTreeTest, MinValue){
+    // Initialize BST data
+    BinarySearchTree* bst = new BinarySearchTree();
+    bst->insert(47);
+    bst->insert(21);
+    bst->insert(76);
+    bst->insert(18);
+    bst->insert(27);
+    bst->insert(52);
+    bst->insert(82);
+
+    EXPECT_TRUE(bst->minValue(bst->root) == 18);
+    cout << bst->minValue(bst->root) << endl;
+}
+
+TEST(BinarySearchTreeTest, getRoot){
+    BinarySearchTree* bst = new BinarySearchTree();
+    bst->insert(0);
+    EXPECT_TRUE(bst->getRoot()->value == 0);
+    EXPECT_TRUE(bst->getRoot()->left == nullptr);
+    EXPECT_TRUE(bst->getRoot()->right == nullptr);
+}
+
+TEST(BinarySearchTreeTest, deleteNode){
+    // Initialize BST data
+    BinarySearchTree* bst = new BinarySearchTree();
+    bst->insert(2);
+    bst->insert(1);
+    bst->insert(3);
+
+    EXPECT_TRUE(bst->getRoot()->value == 2);
+    EXPECT_TRUE(bst->getRoot()->left->value == 1);
+    EXPECT_TRUE(bst->getRoot()->right->value == 3);
+
+    bst->deleteNode(2);
+    cout << bst->getRoot()->value << endl;
+    cout << bst->getRoot()->left->value << endl;
+    cout << bst->getRoot()->right << endl;
+
+    EXPECT_TRUE(bst->getRoot()->value == 3);
+    EXPECT_TRUE(bst->getRoot()->left->value == 1);
+    EXPECT_TRUE(bst->getRoot()->right == nullptr);
+
+    bst->deleteNode(3);
+    EXPECT_TRUE(bst->getRoot()->value == 1);
+    EXPECT_TRUE(bst->getRoot()->left == nullptr);
+    EXPECT_TRUE(bst->getRoot()->right == nullptr);
+
+    bst->deleteNode(1);
+    EXPECT_TRUE(bst->getRoot() == nullptr);
+}
