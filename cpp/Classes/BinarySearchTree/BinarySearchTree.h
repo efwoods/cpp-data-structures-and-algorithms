@@ -30,5 +30,6 @@ class BinarySearchTree{
         void deleteNode(int value);
         int minValue(Node* currentNode);
         Node* getRoot();
+        void BFS();
 };
 

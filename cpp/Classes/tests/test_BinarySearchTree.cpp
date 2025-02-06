@@ -135,3 +135,17 @@ TEST(BinarySearchTreeTest, deleteNode){
     bst->deleteNode(1);
     EXPECT_TRUE(bst->getRoot() == nullptr);
 }
+
+TEST(BinarySearchTreeTest, BreadthFirstSearch){
+    // Initialize BinarySearchTree
+    BinarySearchTree* bst = new BinarySearchTree();
+    bst->insert(47);
+    bst->insert(21);
+    bst->insert(76);
+    bst->insert(18);
+    bst->insert(27);
+    bst->insert(52);
+    bst->insert(82);
+
+    EXPECT_NO_THROW(bst->BFS());
+}

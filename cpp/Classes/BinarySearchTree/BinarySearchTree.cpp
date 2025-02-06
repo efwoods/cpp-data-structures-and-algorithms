@@ -1,4 +1,6 @@
 #include "BinarySearchTree.h"
+#include <queue>
+#include <iostream>
 
 using namespace std;
 
@@ -128,4 +130,21 @@ int BinarySearchTree::minValue(Node* currentNode){
 
 Node* BinarySearchTree::getRoot(){
     return root;
+}
+
+void BinarySearchTree::BFS() {
+    queue<Node*> myQueue;
+    myQueue.push(root);
+
+    while(myQueue.size() > 0){
+        Node* currentNode = myQueue.front();
+        myQueue.pop();
+        cout << currentNode->value << " ";
+        if(currentNode->left != nullptr){
+            myQueue.push(currentNode->left);
+        }
+        if(currentNode->right != nullptr){
+            myQueue.push(currentNode->right);
+        }
+    }
 }
