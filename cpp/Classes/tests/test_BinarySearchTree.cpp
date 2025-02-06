@@ -175,5 +175,5 @@ TEST(BinarySearchTreeTest, DepthFirstSearchPostOrder){
     bst->insert(52);
     bst->insert(82);
 
-    EXPECT_NO_THROW(bst->DFSPreOrder());
+    EXPECT_NO_THROW(bst->DFSPostOrder());
 }
