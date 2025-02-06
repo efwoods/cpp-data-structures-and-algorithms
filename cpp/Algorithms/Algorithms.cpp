@@ -41,3 +41,56 @@ void insertionSort(int array[], int size){
         }
     }
 }
+
+void merge(int array[], int leftIndex, int midIndex, int rightIndex){
+    int i, j, k = 0;
+    int leftArraySize = midIndex - leftIndex + 1;
+    int rightArraySize = rightIndex - midIndex;
+
+    int leftArray[leftArraySize];
+    int rightArray[rightArraySize];
+
+    for (i = 0; i < leftArraySize; i++){
+        leftArray[i] = array[leftIndex + i];
+    }
+
+    for (j = 0; j < rightArraySize; j++){
+        rightArray[j] = array[midIndex + j +1];
+    }
+
+    for (i = 0, j = 0, k = leftIndex; k < rightIndex; k++){
+        if (leftArray[i] <= rightArray[j]){
+            array[k] = leftArray[i];
+            i++;
+        } else {
+            array[k] = rightArray[j];
+            j++;
+        }
+        if (i >= leftArraySize || j >= rightArraySize){
+            break;
+        }
+    }
+    if (i >= leftArraySize){
+        while(j < rightArraySize){
+            k++;
+            array[k] = rightArray[j];
+            j++;
+        }
+    } else if (j >= rightArraySize){
+        while(i < leftArraySize){
+            k++;
+            array[k] = leftArray[i];
+            i++;
+        }
+    }
+}
+
+void mergeSort(int array[], int leftIndex, int rightIndex){
+    if(leftIndex >= rightIndex){
+        return;
+    }
+    int midIndex = leftIndex + (rightIndex - leftIndex) / 2;
+    mergeSort(array, leftIndex, midIndex);
+    mergeSort(array, midIndex+1, rightIndex);
+    merge(array, leftIndex, midIndex, rightIndex);
+}

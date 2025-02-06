@@ -37,3 +37,32 @@ TEST(AlgorithmsTest, InsertionSortTest){
     }
 }
 
+TEST(AlgorithmsTest, MergeTest){
+    int myArray[] = {1, 3, 7, 8, 2, 4, 5, 6};
+
+    int size = sizeof(myArray) / sizeof(myArray[0]);
+    int leftIndex = 0;
+    int rightIndex = size - 1;
+    int midIndex = (size / 2) - 1;
+
+    merge(myArray, leftIndex, midIndex, rightIndex);
+
+    for (auto value : myArray) {
+        cout << value << " ";
+    }
+}
+
+
+TEST(AlgorithmsTest, MergeSortTest){
+    int myArray[] = {3, 1, 4, 2};
+
+    int size = sizeof(myArray) / sizeof(myArray[0]);
+    int leftIndex = 0;
+    int rightIndex = size - 1;
+
+    mergeSort(myArray, leftIndex, rightIndex);
+
+    for (auto value : myArray) {
+        cout << value << " ";
+    }
+}
