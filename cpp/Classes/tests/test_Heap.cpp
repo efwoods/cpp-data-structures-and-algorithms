@@ -10,16 +10,28 @@ TEST(HeapTest, Constructor){
         });
 }
 
-TEST(HeapTest, TestParent){
+TEST(HeapTest, ParentTest){
+    // Initialize Heap
+    Heap* myHeap = new Heap();
+
     EXPECT_TRUE(myHeap->parent(1) == 0);
 }
 
 TEST(HeapTest, LeftChildTest){
-    EXPECT_TRUE(myHeap->leftChild(1) == 2);
+        // Initialize Heap
+    Heap* myHeap = new Heap();
+
+    EXPECT_TRUE(myHeap->leftChild(0) == 1);
+    EXPECT_TRUE(myHeap->leftChild(1) == 3);
+
 }
 
 TEST(HeapTest, RightChildTest){
-    EXPECT_TRUE(myHeap->rightChild(1) == 3);
+    // Initialize Heap
+    Heap* myHeap = new Heap();
+
+    EXPECT_TRUE(myHeap->rightChild(0) == 2);
+    EXPECT_TRUE(myHeap->rightChild(1) == 4);
 }
 
 TEST(HeapTest, Insert) {
