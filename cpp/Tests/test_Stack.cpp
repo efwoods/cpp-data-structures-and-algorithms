@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../Stack/Stack.h"
+#include "../Classes/Stack/Stack.h"
 #include <iostream>
 #include <limits.h>
 

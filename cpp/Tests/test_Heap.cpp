@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include "../Heap/Heap.h"
+#include "../Classes/Heap/Heap.h"
 
 using namespace std;
 

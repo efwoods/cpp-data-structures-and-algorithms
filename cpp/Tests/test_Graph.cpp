@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include "../Graph/Graph.h"
+#include "../Classes/Graph/Graph.h"
 
 using namespace std;
 

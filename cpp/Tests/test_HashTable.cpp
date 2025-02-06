@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include "../HashTable/HashTable.h"
+#include "../Classes/HashTable/HashTable.h"
 
 using namespace std;
 

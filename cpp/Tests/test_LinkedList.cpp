@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../LinkedList.h"
+#include "../Classes/LinkedList.h"
 #include <iostream>
 
 using namespace std;
