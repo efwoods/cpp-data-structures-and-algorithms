@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../Queue/Queue.h"
+#include "../Classes/Queue/Queue.h"
 #include <iostream>
 #include <limits.h>
 

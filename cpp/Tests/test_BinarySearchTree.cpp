@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include "../BinarySearchTree/BinarySearchTree.h"
+#include "../Classes/BinarySearchTree/BinarySearchTree.h"
 
 using namespace std;
 
