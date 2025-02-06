@@ -162,3 +162,17 @@ void BinarySearchTree::DFSPreOrder(Node* currentNode){
 void BinarySearchTree::DFSPreOrder() { // calling the function even though it is private
     DFSPreOrder(root);
 }
+
+void BinarySearchTree::DFSPostOrder(Node* currentNode){
+    if(currentNode->left){
+        DFSPostOrder(currentNode->left);
+    }
+    if(currentNode->right){
+        DFSPostOrder(currentNode->right);
+    }
+    cout << currentNode->value << " ";
+}
+
+void BinarySearchTree::DFSPostOrder(){
+    DFSPostOrder(root);
+}

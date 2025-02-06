@@ -33,5 +33,7 @@ class BinarySearchTree{
         void BFS();
         void DFSPreOrder(Node* currentNode);
         void DFSPreOrder();
+        void DFSPostOrder(Node* currentNode);
+        void DFSPostOrder();
 };
 
