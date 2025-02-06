@@ -63,3 +63,19 @@ void BinarySearchTree::destroy(Node* currentNode){
     }
     delete currentNode;
 }
+
+bool BinarySearchTree::rContains(Node* currentNode, int value){
+    if (currentNode == nullptr) return false;
+
+    if (currentNode->value == value) return true;
+
+    if (value < currentNode->value) {
+        return rContains(currentNode->left, value);
+    } else {
+        return rContains(currentNode->right, value);
+    }
+}
+
+bool BinarySearchTree::rContains(int value){
+    return rContains(root, value);
+}

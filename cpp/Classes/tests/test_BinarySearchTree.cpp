@@ -63,3 +63,23 @@ TEST(BinarySearchTreeTest, Deconstructor){
     BinarySearchTree* bst = new BinarySearchTree();
     EXPECT_NO_THROW(bst->~BinarySearchTree());
 }
+
+TEST(BinarySearchTreeTest, rContains){
+    // Initialize BST data
+    BinarySearchTree* bst = new BinarySearchTree();
+    bst->insert(47);
+    bst->insert(21);
+    bst->insert(76);
+    bst->insert(18);
+    bst->insert(27);
+    bst->insert(52);
+    bst->insert(82);
+
+    cout << "\nBST Contains 27:\n";
+    cout << bst->rContains(27);
+
+    cout << "\nBST Contains 17:\n";
+    cout << bst->rContains(17);
+
+    
+}
