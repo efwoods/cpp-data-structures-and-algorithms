@@ -25,3 +25,15 @@ TEST(AlgorithmsTest, SelectionSortTest){
         cout << value << " ";
     }
 }
+
+TEST(AlgorithmsTest, InsertionSortTest){
+    int myArray[] = {6, 4, 2, 5, 1, 3};
+    int size = sizeof(myArray) / sizeof(myArray[0]);
+
+    EXPECT_NO_THROW(insertionSort(myArray, size));
+
+    for (auto value : myArray){
+        cout << value << " ";
+    }
+}
+

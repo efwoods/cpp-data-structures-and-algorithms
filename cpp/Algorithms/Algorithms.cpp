@@ -30,3 +30,14 @@ void selectionSort(int array[], int size){
     }
 }
 
+void insertionSort(int array[], int size){
+    for (int i = 1; i < size; i++){
+        int temp = array[i];
+        int j = i - 1;
+        while(j > -1 && temp < array[j]){
+            array[j+1] = array[j];
+            array[j] = temp;
+            j--;
+        }
+    }
+}
