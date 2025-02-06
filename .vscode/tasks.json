@@ -9,7 +9,7 @@
                 "-g",
                 "-o",
                 "bin/${fileBasenameNoExtension}", // output binary name
-                "../Classes/BinarySearchTree/BinarySearchTree.cpp", // Implementation file
+                "../Classes/LinkedList/LinkedList.cpp", // Implementation file
                 "${fileBasename}", // Compile the test file, 
                 "-lgtest", 
                 "-lgtest_main", 

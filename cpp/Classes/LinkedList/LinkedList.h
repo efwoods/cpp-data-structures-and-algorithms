@@ -32,4 +32,7 @@ class LinkedList{
         Node* getHead();
         Node* getTail();
         int getLength();
+        void bubbleSort();
+        void selectionSort();
+        void insertionSort();
 };

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../Classes/LinkedList.h"
+#include "../Classes/LinkedList/LinkedList.h"
 #include <iostream>
 
 using namespace std;
@@ -8,6 +8,64 @@ using namespace std;
 TEST(LinkedListTest, Constructor){
     LinkedList* list = new LinkedList(10);
     EXPECT_EQ(list->get(0)->value, 10);
+}
+
+TEST(LinkedListTest, BubbleSortTest){
+    // Populating the Linked List
+    LinkedList list(5);
+    list.append(2);
+    list.append(9);
+    list.append(1);
+    list.append(5);
+    list.append(6);
+
+    list.bubbleSort();
+
+    int expectedValues[] = {1, 2, 5, 5, 6, 9};
+
+    for (int i = 0; i < list.getLength(); i++){
+        EXPECT_TRUE(list.get(i)->value == expectedValues[i]);
+    }
+}
+
+TEST(LinkedListTest, SelectionSortTest){
+    // Populating the Linked List
+    LinkedList list(5);
+    list.append(2);
+    list.append(9);
+    list.append(1);
+    list.append(5);
+    list.append(6);
+
+    list.selectionSort();
+
+    int expectedValues[] = {1, 2, 5, 5, 6, 9};
+
+    list.printList();
+
+    for (int i = 0; i < list.getLength(); i++){
+        EXPECT_TRUE(list.get(i)->value == expectedValues[i]);
+    }
+}
+
+TEST(LinkedListTest, InsertionSortTest){
+    // Populating the Linked List
+    LinkedList list(5);
+    list.append(2);
+    list.append(9);
+    list.append(1);
+    list.append(5);
+    list.append(6);
+
+    list.insertionSort();
+
+    int expectedValues[] = {1, 2, 5, 5, 6, 9};
+
+    list.printList();
+
+    for (int i = 0; i < list.getLength(); i++){
+        EXPECT_TRUE(list.get(i)->value == expectedValues[i]);
+    }
 }
 
 void testPrint(){
@@ -264,14 +322,14 @@ int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
 
     // Custom Tests
-    testPrint();
-    printTestAppend();
-    printTestDeleteLast();
-    printTestPrepend();
-    printTestDeleteFirst();
-    printTestInsert();
-    printTestDeleteNode();
-    printTestReverseList();
+    // testPrint();
+    // printTestAppend();
+    // printTestDeleteLast();
+    // printTestPrepend();
+    // printTestDeleteFirst();
+    // printTestInsert();
+    // printTestDeleteNode();
+    // printTestReverseList();
 
     // GTests
     return RUN_ALL_TESTS();
