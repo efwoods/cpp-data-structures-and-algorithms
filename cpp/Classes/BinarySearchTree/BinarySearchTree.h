@@ -31,5 +31,7 @@ class BinarySearchTree{
         int minValue(Node* currentNode);
         Node* getRoot();
         void BFS();
+        void DFSPreOrder(Node* currentNode);
+        void DFSPreOrder();
 };
 

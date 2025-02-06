@@ -148,3 +148,17 @@ void BinarySearchTree::BFS() {
         }
     }
 }
+
+void BinarySearchTree::DFSPreOrder(Node* currentNode){
+    cout << currentNode->value << " ";
+    if(currentNode->left){
+        DFSPreOrder(currentNode->left);
+    }
+    if(currentNode->right){
+        DFSPreOrder(currentNode->right);
+    }
+}
+
+void BinarySearchTree::DFSPreOrder() { // calling the function even though it is private
+    DFSPreOrder(root);
+}
