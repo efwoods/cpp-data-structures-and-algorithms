@@ -35,4 +35,5 @@ class LinkedList{
         void bubbleSort();
         void selectionSort();
         void insertionSort();
+        void merge(LinkedList& otherList);
 };

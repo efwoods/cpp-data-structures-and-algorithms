@@ -279,3 +279,24 @@ void LinkedList::insertionSort(){
         index++;
     }
 }
+
+void LinkedList::merge(LinkedList& otherList){
+        Node* mergeNode = new Node(0);
+        Node* current = mergeNode;
+        
+    	//   +=====================================================+
+		//   |                WRITE YOUR CODE HERE                 |
+		//   | Description:                                        |
+		//   | - This method merges two sorted linked lists        |
+		//   |   into a single sorted linked list.                 |
+		//   | - Utilizes a dummy node to simplify merging.        |
+		//   |                                                     |
+		//   | Return type: void                                   |
+		//   | - Modifies the list in place.                       |
+		//   | - Sets the 'head' and 'tail' pointers correctly.    |
+		//   |                                                     |
+		//   | Tips:                                               |
+		//   | - Uses a dummy node for easier linking.             |
+		//   | - Check output from Test.cpp in "User logs".        |
+		//   +=====================================================+
+}
