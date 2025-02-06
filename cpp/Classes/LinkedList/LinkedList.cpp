@@ -283,7 +283,10 @@ void LinkedList::insertionSort(){
 void LinkedList::merge(LinkedList& otherList){
         Node* mergeNode = new Node(0);
         Node* current = mergeNode;
-        
+        while(current != nullptr && otherList.getLength() > 0){
+            
+
+        }
     	//   +=====================================================+
 		//   |                WRITE YOUR CODE HERE                 |
 		//   | Description:                                        |
