@@ -176,3 +176,19 @@ void BinarySearchTree::DFSPostOrder(Node* currentNode){
 void BinarySearchTree::DFSPostOrder(){
     DFSPostOrder(root);
 }
+
+void BinarySearchTree::DFSInOrder(Node* currentNode){
+    if(currentNode->left){
+        DFSInOrder(currentNode->left);
+    }
+
+    cout << currentNode->value << " ";
+    
+    if(currentNode->right){
+        DFSInOrder(currentNode->right);
+    }
+}
+
+void BinarySearchTree::DFSInOrder(){
+    DFSInOrder(root);
+}

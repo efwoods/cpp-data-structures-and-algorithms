@@ -35,5 +35,7 @@ class BinarySearchTree{
         void DFSPreOrder();
         void DFSPostOrder(Node* currentNode);
         void DFSPostOrder();
+        void DFSInOrder(Node* currentNode);
+        void DFSInOrder();
 };
 
