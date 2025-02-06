@@ -206,3 +206,76 @@ Node* LinkedList::getTail(){
 int LinkedList::getLength(){
     return length;
 }
+
+void LinkedList::bubbleSort(){
+    if (length < 2){
+        return;
+    }
+    Node* current = head;
+    Node* sortUntil = tail;
+    Node* prev;
+    
+    while(current != sortUntil){
+        while(current != sortUntil){
+            if (current->value > current->next->value){
+                int temp = current->value;
+                current->value = current->next->value;
+                current->next->value = temp;
+            }
+            if (current->next == sortUntil){
+                prev = current;
+            }
+            current = current->next;
+        }
+        sortUntil = prev;
+        current = head;
+    }
+}
+
+void LinkedList::selectionSort(){
+    if(length < 2){
+        return;
+    }
+
+    Node* current = head;
+    Node* traveler = head;
+    int index = 0;
+    while(current != tail){
+        for(int i = index; i < length; i++){
+            if (current->value > traveler->value){
+                int temp = current->value;
+                current->value = traveler->value;
+                traveler->value = temp;
+            }
+            traveler = traveler->next;
+        }
+        current = current->next;
+        traveler = current;
+        index++;
+    }
+}
+
+void LinkedList::insertionSort(){
+    if(length < 2){
+        return;
+    }
+
+    Node* sorted = head;
+    Node* unsorted = head->next;
+    int index = 1;
+    while(sorted != tail){
+        unsorted = sorted->next;
+        int minimumValue = sorted->value;
+        for (int i = index; i < length; i++){
+            if (minimumValue > unsorted->value){
+                int temp = minimumValue;
+                minimumValue = unsorted->value;
+                unsorted->value = temp;
+            }
+            unsorted = unsorted->next;
+        }
+        sorted->value = minimumValue;
+        sorted = sorted->next;
+        index++;
+    }
+}
