@@ -30,5 +30,12 @@ class BinarySearchTree{
         void deleteNode(int value);
         int minValue(Node* currentNode);
         Node* getRoot();
+        void BFS();
+        void DFSPreOrder(Node* currentNode);
+        void DFSPreOrder();
+        void DFSPostOrder(Node* currentNode);
+        void DFSPostOrder();
+        void DFSInOrder(Node* currentNode);
+        void DFSInOrder();
 };
 

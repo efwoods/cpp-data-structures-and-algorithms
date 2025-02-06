@@ -1,4 +1,6 @@
 #include "BinarySearchTree.h"
+#include <queue>
+#include <iostream>
 
 using namespace std;
 
@@ -128,4 +130,65 @@ int BinarySearchTree::minValue(Node* currentNode){
 
 Node* BinarySearchTree::getRoot(){
     return root;
+}
+
+void BinarySearchTree::BFS() {
+    queue<Node*> myQueue;
+    myQueue.push(root);
+
+    while(myQueue.size() > 0){
+        Node* currentNode = myQueue.front();
+        myQueue.pop();
+        cout << currentNode->value << " ";
+        if(currentNode->left != nullptr){
+            myQueue.push(currentNode->left);
+        }
+        if(currentNode->right != nullptr){
+            myQueue.push(currentNode->right);
+        }
+    }
+}
+
+void BinarySearchTree::DFSPreOrder(Node* currentNode){
+    cout << currentNode->value << " ";
+    if(currentNode->left){
+        DFSPreOrder(currentNode->left);
+    }
+    if(currentNode->right){
+        DFSPreOrder(currentNode->right);
+    }
+}
+
+void BinarySearchTree::DFSPreOrder() { // calling the function even though it is private
+    DFSPreOrder(root);
+}
+
+void BinarySearchTree::DFSPostOrder(Node* currentNode){
+    if(currentNode->left){
+        DFSPostOrder(currentNode->left);
+    }
+    if(currentNode->right){
+        DFSPostOrder(currentNode->right);
+    }
+    cout << currentNode->value << " ";
+}
+
+void BinarySearchTree::DFSPostOrder(){
+    DFSPostOrder(root);
+}
+
+void BinarySearchTree::DFSInOrder(Node* currentNode){
+    if(currentNode->left){
+        DFSInOrder(currentNode->left);
+    }
+
+    cout << currentNode->value << " ";
+    
+    if(currentNode->right){
+        DFSInOrder(currentNode->right);
+    }
+}
+
+void BinarySearchTree::DFSInOrder(){
+    DFSInOrder(root);
 }
