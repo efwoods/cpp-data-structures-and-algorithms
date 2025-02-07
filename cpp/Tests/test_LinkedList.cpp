@@ -68,6 +68,32 @@ TEST(LinkedListTest, InsertionSortTest){
     }
 }
 
+TEST(LinkedListTest, MergeTest){
+    cout << "TEST(LinkedListTest, MergeTest)" << endl;
+    // Populating the Linked List
+    LinkedList list(1);
+    list.append(3);
+    list.append(5);
+
+    // Populating the Other List
+    LinkedList* otherList = new LinkedList(2);
+    otherList->append(4);
+    otherList->append(6);
+
+    list.merge(*otherList);
+
+    vector<int> expected_values = {1, 2, 3, 4, 5, 6};
+    
+    for (auto val : expected_values){
+        // cout << "val:" << val << "\n";
+        // cout << "list.get(val -1)->value: " << list.get(val - 1)->value << "\n\n";
+
+        EXPECT_TRUE(list.get(val - 1)->value == val);
+    }
+    // list.printList();
+
+}
+
 void testPrint(){
     // Testing print statements
     LinkedList* myLinkedList = new LinkedList(4);
