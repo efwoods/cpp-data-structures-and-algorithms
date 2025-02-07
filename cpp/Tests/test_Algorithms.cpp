@@ -1,6 +1,7 @@
 #include "../Algorithms/Algorithms.h"
 #include <gtest/gtest.h>
 #include <iostream>
+#include <limits.h>
 
 using namespace std;
 
@@ -65,4 +66,18 @@ TEST(AlgorithmsTest, MergeSortTest){
     for (auto value : myArray) {
         cout << value << " ";
     }
+}
+
+TEST(AlgorithmsTest, PivotTest){
+    int myArray[] = {4, 6, 1, 7, 3, 2, 5};
+    EXPECT_TRUE(pivot(myArray, 0, 6) == 3);
+
+    int testArray[] = {2, 1, 3};
+    EXPECT_TRUE(pivot(testArray, 0, 2) == 1);
+
+    int singleArray[] = {1};
+    EXPECT_TRUE(pivot(singleArray, 0, 0) == INT_MIN);
+
+    int emptyArray[] = {};
+    EXPECT_NO_THROW(pivot(emptyArray, 0, 0) == INT_MIN);
 }
