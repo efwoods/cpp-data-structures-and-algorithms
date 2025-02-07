@@ -1,4 +1,5 @@
 #include "Algorithms.h"
+#include <limits.h>
 
 using namespace std;
 
@@ -93,4 +94,34 @@ void mergeSort(int array[], int leftIndex, int rightIndex){
     mergeSort(array, leftIndex, midIndex);
     mergeSort(array, midIndex+1, rightIndex);
     merge(array, leftIndex, midIndex, rightIndex);
+}
+
+int pivot(int array[], int leftIndex, int rightIndex){
+    int swapIndex = leftIndex;
+    int pivotIndex = leftIndex;
+    int temp;
+
+    for(int i = leftIndex + 1; i < rightIndex + 1; i++){
+        if(array[i] > array[pivotIndex]){
+            continue;
+        } else if(array[i] < array[pivotIndex]){
+            swapIndex++;
+            temp = array[swapIndex];
+            array[swapIndex] = array[i];
+            array[i] = temp;
+        }
+    }
+    temp = array[swapIndex];
+    array[swapIndex] = array[pivotIndex];
+    array[pivotIndex] = temp;
+    return swapIndex;
+}
+
+void quickSort(int array[], int leftIndex, int rightIndex){
+    if(leftIndex >= rightIndex){
+        return;
+    }
+    int pivotIndex = pivot(array, leftIndex, rightIndex);
+    quickSort(array, leftIndex, pivotIndex - 1);
+    quickSort(array, pivotIndex+1, rightIndex);
 }

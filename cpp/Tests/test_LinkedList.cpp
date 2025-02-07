@@ -76,11 +76,11 @@ TEST(LinkedListTest, MergeTest){
     list.append(5);
 
     // Populating the Other List
-    LinkedList* otherList = new LinkedList(2);
-    otherList->append(4);
-    otherList->append(6);
+    LinkedList otherList(2);
+    otherList.append(4);
+    otherList.append(6);
 
-    list.merge(*otherList);
+    list.merge(otherList);
 
     vector<int> expected_values = {1, 2, 3, 4, 5, 6};
     
@@ -92,6 +92,32 @@ TEST(LinkedListTest, MergeTest){
     }
     // list.printList();
 
+    list.~LinkedList();
+    otherList.~LinkedList();
+
+    // cout << "Testing empty first list" << endl;
+
+    new (&list) LinkedList(0);
+    list.deleteFirst();
+
+    new (&otherList) LinkedList(5);
+
+    EXPECT_TRUE(list.getLength() == 0);
+
+    list.merge(otherList);
+
+    expected_values = {5};
+
+    for (int i = 0; i < list.getLength(); i++){
+        cout << "val:" << i << "\n";
+        cout << "list.get(val -1)->value: " << list.get(i)->value << "\n\n";
+        EXPECT_TRUE(list.get(i)->value == expected_values[i]);
+    }
+    list.printList();
+
+    EXPECT_TRUE(list.getLength() == 1);
+    EXPECT_TRUE(list.getHead()->value == 5);
+    EXPECT_TRUE(list.getTail()->value == 5);
 }
 
 void testPrint(){
