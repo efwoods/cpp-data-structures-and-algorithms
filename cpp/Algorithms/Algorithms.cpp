@@ -97,14 +97,11 @@ void mergeSort(int array[], int leftIndex, int rightIndex){
 }
 
 int pivot(int array[], int leftIndex, int rightIndex){
-    int pivotIndex = (rightIndex - leftIndex) / 2;
-    if (pivotIndex == 0){
-        return INT_MIN;
-    }
-    int swapIndex = pivotIndex;
+    int swapIndex = leftIndex;
+    int pivotIndex = leftIndex;
     int temp;
 
-    for(int i = leftIndex + 1; i < rightIndex; i++){
+    for(int i = leftIndex + 1; i < rightIndex + 1; i++){
         if(array[i] > array[pivotIndex]){
             continue;
         } else if(array[i] < array[pivotIndex]){
@@ -117,7 +114,7 @@ int pivot(int array[], int leftIndex, int rightIndex){
     temp = array[swapIndex];
     array[swapIndex] = array[pivotIndex];
     array[pivotIndex] = temp;
-    return pivotIndex;
+    return swapIndex;
 }
 
 void quickSort(int array[], int leftIndex, int rightIndex){
