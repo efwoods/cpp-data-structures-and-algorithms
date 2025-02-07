@@ -281,7 +281,6 @@ void LinkedList::insertionSort(){
 }
 
 void LinkedList::merge(LinkedList& otherList){
-        
         Node* mergeNode = new Node(0);
         Node* current = mergeNode;
     
