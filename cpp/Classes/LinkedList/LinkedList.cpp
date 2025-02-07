@@ -313,7 +313,7 @@ void LinkedList::merge(LinkedList& otherList){
         if(current != head){
             tail = current;
         } else { // both lists were empty & current did not traverse; head will be nullptr
-            tail = nullptr;
+            tail = head;
         }
 
         // update length
