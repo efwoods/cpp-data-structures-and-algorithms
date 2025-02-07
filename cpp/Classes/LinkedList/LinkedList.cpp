@@ -279,3 +279,48 @@ void LinkedList::insertionSort(){
         index++;
     }
 }
+
+void LinkedList::merge(LinkedList& otherList){
+        Node* mergeNode = new Node(0);
+        Node* current = mergeNode;
+    
+        while(length > 0 && otherList.getLength() > 0){
+            if(head->value <= otherList.getHead()->value){
+                current->next = new Node(head->value);
+                deleteFirst();
+            } else {
+                current->next = new Node(otherList.getHead()->value);
+                otherList.deleteFirst();
+            }
+            current = current->next;
+        }
+        if(length == 0){
+            while(otherList.getLength() > 0){
+                current->next = new Node(otherList.getHead()->value);
+                otherList.deleteFirst();
+                current = current->next;
+            }
+        } else if(otherList.getLength() == 0){
+            while(length > 0){
+                current->next = new Node(head->value);
+                deleteFirst();
+                current = current->next;
+            }
+        }
+
+        head = mergeNode->next;
+        delete(mergeNode);
+        if(current != head){
+            tail = current;
+        } else { // both lists were empty & current did not traverse; head will be nullptr
+            tail = nullptr;
+        }
+
+        // update length
+        current = head;
+        length = 0;
+        while(current != nullptr){
+            length++;
+            current = current->next;
+        }
+}
