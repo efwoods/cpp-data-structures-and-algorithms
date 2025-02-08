@@ -5,6 +5,12 @@
 
 using namespace std;
 
+void printIntegers(vector<int> & nums){
+    for(auto integer : nums){
+        cout << integer << endl;
+    }
+}
+
 TEST(AlgorithmsTest, BubbleSortTest){
     int myArray[] = {6, 4, 2, 5, 1, 3};
     int size = sizeof(myArray) / sizeof(myArray[0]);
@@ -100,7 +106,58 @@ TEST(AlgorithmsTest, QuickSortTest){
 }
 
 TEST(AlgorithmsTest, RemoveElement){
-    vector<int> nums = {3, 2, 3, 6, 3, 4, 5, 3};
-    EXPECT_NO_THROW(removeElement(&nums, 3));
+    // cout << "Remove Elements Test Two Elements" << endl;
+    vector<int> nums = {3, 1};
     
+    // printIntegers(nums);
+
+    EXPECT_NO_THROW(removeElement(nums, 3));
+    EXPECT_TRUE(nums[0] == 1);
+    EXPECT_TRUE(nums.size() == 1);
+
+    // printIntegers(nums);
+    
+    // cout << "Remove Elements Test One Element Remove" << endl;
+    nums = {3};
+    
+    // printIntegers(nums);
+
+    EXPECT_NO_THROW(removeElement(nums, 3));
+    EXPECT_TRUE(nums.size() == 0);
+
+    // printIntegers(nums);
+
+    // cout << "Remove Elements Test One Element Non-remove" << endl;
+    nums = {1};
+    
+    // printIntegers(nums);
+
+    EXPECT_NO_THROW(removeElement(nums, 3));
+    EXPECT_TRUE(nums.size() == 1);
+    EXPECT_TRUE(nums[0] == 1);
+
+    // printIntegers(nums);
+
+    // cout << "Remove Elements Test Empty Vector" << endl;
+    nums = {};
+    
+    // printIntegers(nums);
+    EXPECT_NO_THROW(removeElement(nums, 3));
+    EXPECT_TRUE(nums.size() == 0);
+
+    // printIntegers(nums);
+
+    // cout << "Remove Elements Test Multiple Elements" << endl;
+    nums = {3, 2, 3, 6, 3, 4, 5, 3};
+    
+    // printIntegers(nums);
+
+    EXPECT_NO_THROW(removeElement(nums, 3));
+    EXPECT_TRUE(nums.size() == 4);
+    EXPECT_TRUE(nums[0] == 2);
+    EXPECT_TRUE(nums[1] == 6);
+    EXPECT_TRUE(nums[2] == 4);
+    EXPECT_TRUE(nums[3] == 5);
+
+    // printIntegers(nums);
 }
