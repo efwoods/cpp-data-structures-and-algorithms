@@ -125,3 +125,11 @@ void quickSort(int array[], int leftIndex, int rightIndex){
     quickSort(array, leftIndex, pivotIndex - 1);
     quickSort(array, pivotIndex+1, rightIndex);
 }
+
+int removeElement(vector<int>& nums, int val){
+    int* i;
+    int* j;
+
+    while(i!= nullptr && j!=nullptr){
+    }
+}

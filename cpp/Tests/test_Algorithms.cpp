@@ -98,3 +98,9 @@ TEST(AlgorithmsTest, QuickSortTest){
         EXPECT_TRUE(myArray[i] == expected_values[i]);
     }
 }
+
+TEST(AlgorithmsTest, RemoveElement){
+    vector<int> nums = {3, 2, 3, 6, 3, 4, 5, 3};
+    EXPECT_NO_THROW(removeElement(&nums, 3));
+    
+}

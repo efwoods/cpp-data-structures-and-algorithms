@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 using namespace std;
 
@@ -9,3 +10,4 @@ void merge(int array[], int leftIndex, int midIndex, int rightIndex);
 void mergeSort(int array[], int leftIndex, int rightIndex);
 int pivot(int array[], int leftIndex, int rightIndex);
 void quickSort(int array[], int leftIndex, int rightIndex);
+int removeElement(vector<int>& nums, int val);
