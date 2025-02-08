@@ -178,3 +178,35 @@ string findLongestString(vector<string>& stringList){
     }
     return longestString;
 }
+
+int removeDuplicates(vector<int>& nums){
+    if(nums.size() < 2){
+        return nums.size();
+    }
+
+    int uniqueIntegers = 1;
+    int readPointerIndex = 0;
+    int currentSize = nums.size();
+    auto writePointer = &nums[0];
+    auto readPointer = &nums[0];
+    readPointer++;
+    readPointerIndex++;
+    while(currentSize > 0 && readPointerIndex <= currentSize){
+        while(*writePointer == *readPointer && currentSize > readPointerIndex){
+            // delete(readPointer);
+            readPointer++;
+            readPointerIndex++;
+        }
+        if(readPointerIndex >= currentSize){
+            for (int count = (nums.size() - uniqueIntegers); count > 0; count--){
+                nums.pop_back();
+            }
+            return nums.size();
+        } else {
+            uniqueIntegers++;
+            writePointer++;
+            *writePointer = *readPointer;
+        }
+    }
+    return nums.size();
+}

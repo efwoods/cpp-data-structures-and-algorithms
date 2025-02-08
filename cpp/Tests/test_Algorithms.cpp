@@ -21,6 +21,18 @@ void printVector(const vector<string>& strings) {
     cout << "]";
 }
 
+void printVector(const vector<int>& nums, int newSize = -1) {
+    cout << "[";
+    int sizeToPrint = (newSize == -1) ? nums.size() : newSize;
+    for (int i = 0; i < sizeToPrint; i++) {
+        cout << nums[i];
+        if (i < sizeToPrint - 1) {
+            cout << ", ";
+        }
+    }
+    cout << "]";
+}
+
 TEST(AlgorithmsTest, BubbleSortTest){
     int myArray[] = {6, 4, 2, 5, 1, 3};
     int size = sizeof(myArray) / sizeof(myArray[0]);
@@ -369,4 +381,64 @@ TEST(AlgorithmsTest, LongestStringTest){
         cout << "Input: "; printVector(stringList); cout << "\n";
         cout << "Output: \"" << result << "\"\n";
         cout << (result == expected ? "PASS\n" : "FAIL\n");
+}
+
+TEST(AlgorithmsTest, RemoveDuplicatesTest){
+        // cout << "\n----- Test: EmptyList -----\n";
+        vector<int> nums = {};
+        vector<int> expected_values = {};
+        // cout << "Before: "; printVector(nums); cout << "\n";
+        int newSize = removeDuplicates(nums);
+        EXPECT_TRUE(newSize == 0);
+        EXPECT_TRUE(nums.empty());
+        // cout << "After: "; printVector(nums, newSize); cout << "\n";
+        // cout << (newSize == 0 && nums.empty() ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: SingleElement -----\n";
+        nums = {5};
+        // cout << "Before: "; printVector(nums); cout << "\n";
+        newSize = removeDuplicates(nums);
+        EXPECT_TRUE(nums[0] == 5);
+        EXPECT_TRUE(newSize == 1);
+        EXPECT_TRUE(nums.size() == 1);
+        // cout << "After: "; printVector(nums, newSize); cout << "\n";
+        // cout << (newSize == 1 && nums[0] == 5 ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: MultipleDuplicates -----\n";
+        nums = {1, 1, 1, 2, 2, 3, 4, 4, 4};
+        // cout << "Before: "; printVector(nums); cout << "\n";
+        newSize = removeDuplicates(nums);
+        expected_values = {1, 2, 3, 4};
+        EXPECT_TRUE(newSize == 4);
+        EXPECT_TRUE(nums == expected_values);
+        EXPECT_TRUE(nums.size() == 4);
+
+        // cout << "After: "; printVector(nums, newSize); cout << "\n";
+        // if (newSize == 4 && nums[0] == 1 && nums[1] == 2 && nums[2] == 3 && nums[3] == 4) {
+            // cout << "PASS\n";
+        // } else {
+            // cout << "FAIL\n";
+        // }
+
+        // cout << "\n----- Test: NoDuplicates -----\n";
+        nums = {1, 2, 3, 4, 5};
+        // cout << "Before: "; printVector(nums); cout << "\n";
+        newSize = removeDuplicates(nums);
+        expected_values = {1, 2, 3, 4, 5};
+        EXPECT_TRUE(newSize == 5);
+        EXPECT_TRUE(nums.size() == 5);
+        EXPECT_TRUE(nums == expected_values);
+        // cout << "After: "; printVector(nums, newSize); cout << "\n";
+        // bool pass = true;
+        // if (newSize != 5) {
+            // pass = false;
+        // } else {
+            // for (int i = 0; i < newSize; i++) {
+                // if (nums[i] != i + 1) {
+                    // pass = false;
+                    // break;
+                // }
+            // }
+        // }
+        // cout << (pass ? "PASS\n" : "FAIL\n");
 }
