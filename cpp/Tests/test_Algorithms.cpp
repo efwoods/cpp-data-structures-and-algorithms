@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void printIntegers(vector<int> & nums){
+void printVector(vector<int> & nums){
     for(auto integer : nums){
         cout << integer << endl;
     }
@@ -110,18 +110,18 @@ TEST(AlgorithmsTest, RemoveElement){
     vector<int> nums = {3, 1};
     vector<int> expected_values = {1};
     int index;
-    // printIntegers(nums);
+    // printVector(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 3));
     EXPECT_TRUE(nums[0] == 1);
     EXPECT_TRUE(nums.size() == 1);
 
-    printIntegers(nums);
+    printVector(nums);
     
     // cout << "Remove Elements Test One Element Remove" << endl;
     nums = {10};
     expected_values = {};
-    printIntegers(nums);
+    printVector(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 10));
     EXPECT_TRUE(nums.size() == 0);
@@ -129,32 +129,32 @@ TEST(AlgorithmsTest, RemoveElement){
         EXPECT_TRUE(expected_values[index] == nums[index]);
     }
 
-    // printIntegers(nums);
+    // printVector(nums);
 
     // cout << "Remove Elements Test One Element Non-remove" << endl;
     nums = {1};
     
-    // printIntegers(nums);
+    // printVector(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 3));
     EXPECT_TRUE(nums.size() == 1);
     EXPECT_TRUE(nums[0] == 1);
 
-    // printIntegers(nums);
+    // printVector(nums);
 
     // cout << "Remove Elements Test Empty Vector" << endl;
     nums = {};
     
-    // printIntegers(nums);
+    // printVector(nums);
     EXPECT_NO_THROW(removeElement(nums, 3));
     EXPECT_TRUE(nums.size() == 0);
 
-    // printIntegers(nums);
+    // printVector(nums);
 
     cout << "Remove Elements Test Multiple Elements" << endl;
     nums = {3, 2, 3, 6, 3, 4, 5, 3};
     
-    printIntegers(nums);
+    printVector(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 3));
     EXPECT_TRUE(nums.size() == 4);
@@ -163,23 +163,23 @@ TEST(AlgorithmsTest, RemoveElement){
     EXPECT_TRUE(nums[2] == 4);
     EXPECT_TRUE(nums[3] == 5);
 
-    printIntegers(nums);
+    printVector(nums);
 
     cout << " Test All Elements are Target" << endl;
     nums = {3, 3, 3, 3};
     
-    // printIntegers(nums);
+    // printVector(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 3));
     EXPECT_TRUE(nums.size() == 0);
 
-    // printIntegers(nums);
+    // printVector(nums);
 
     // cout << "Multiple Target Elements" << endl;
     nums = {1, 10, 2, 10, 3, 10, 4, 10, 5};
     expected_values = {1, 2, 3, 4, 5};
     
-    // printIntegers(nums);
+    // printVector(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 10));
     EXPECT_TRUE(nums.size() == 5);
@@ -187,14 +187,14 @@ TEST(AlgorithmsTest, RemoveElement){
         EXPECT_TRUE(expected_values[index] == nums[index]);
     }
 
-    // printIntegers(nums);
+    // printVector(nums);
 
 
     // cout << "Test Target at Elements at End" << endl;
     nums = {1, 2, 3, 10, 10};
     expected_values = {1, 2, 3};
     
-    // printIntegers(nums);
+    // printVector(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 10));
     EXPECT_TRUE(nums.size() == 3);
@@ -203,13 +203,13 @@ TEST(AlgorithmsTest, RemoveElement){
         EXPECT_TRUE(expected_values[index] == nums[index]);
     }
 
-    // printIntegers(nums);
+    // printVector(nums);
 
     cout << "Test Target at Elements at Beginning" << endl;
     nums = {10, 10, 1, 2, 3};
     expected_values = {1, 2, 3};
     
-    printIntegers(nums);
+    printVector(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 10));
     EXPECT_TRUE(nums.size() == 3);
@@ -218,5 +218,70 @@ TEST(AlgorithmsTest, RemoveElement){
         EXPECT_TRUE(expected_values[index] == nums[index]);
     }
 
-    printIntegers(nums);
+    printVector(nums);
+}
+
+TEST(AlgorithmsTest, FindMaxMinTest){
+        // cout << "\n----- Test: SingleElement -----\n";
+        vector<int> nums = {5};
+        vector<int> result = findMaxMin(nums);
+        vector<int> expected = {5, 5};
+        // cout << "Input: "; printVector(nums); cout << "\n";
+        // cout << "Output: "; printVector(result); cout << "\n";
+        EXPECT_TRUE(result == expected);
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: AscendingOrder -----\n";
+        nums = {1, 2, 3, 4, 5};
+        result = findMaxMin(nums);
+        expected = {5, 1};
+        // cout << "Input: "; printVector(nums); cout << "\n";
+        // cout << "Output: "; printVector(result); cout << "\n";
+        EXPECT_TRUE(result == expected);
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: DescendingOrder -----\n";
+        nums = {5, 4, 3, 2, 1};
+        result = findMaxMin(nums);
+        expected = {5, 1};
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(nums); cout << "\n";
+        // cout << "Output: "; printVector(result); cout << "\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: RandomOrder -----\n";
+        nums = {3, 5, 1, 4, 2};
+        result = findMaxMin(nums);
+        expected = {5, 1};
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(nums); cout << "\n";
+        // cout << "Output: "; printVector(result); cout << "\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: AllSameElements -----\n";
+        nums = {3, 3, 3, 3, 3};
+        result = findMaxMin(nums);
+        expected = {3, 3};
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(nums); cout << "\n";
+        // cout << "Output: "; printVector(result); cout << "\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: PositiveAndNegative -----\n";
+        nums = {-3, 5, -1, 4, 2};
+        result = findMaxMin(nums);
+        expected = {5, -3};
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(nums); cout << "\n";
+        // cout << "Output: "; printVector(result); cout << "\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: OnlyNegative -----\n";
+        nums = {-3, -5, -1, -4, -2};
+        result = findMaxMin(nums);
+        expected = {-1, -5};
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(nums); cout << "\n";
+        // cout << "Output: "; printVector(result); cout << "\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
 }

@@ -11,3 +11,4 @@ void mergeSort(int array[], int leftIndex, int rightIndex);
 int pivot(int array[], int leftIndex, int rightIndex);
 void quickSort(int array[], int leftIndex, int rightIndex);
 void removeElement(vector<int>& nums, int val);
+vector<int> findMaxMin(vector<int>& myList);

@@ -147,3 +147,21 @@ void removeElement(vector<int>& nums, int val){
         }
     }
 }
+
+vector<int> findMaxMin(vector<int>& myList){
+    vector<int> result;
+    int maximum = INT_MIN;
+    int minimum = INT_MAX;
+
+    for (int integer : myList){
+        if (integer > maximum){
+            maximum = integer;
+        }
+        if(integer < minimum){
+            minimum = integer;
+        }
+    }
+    result.push_back(maximum);
+    result.push_back(minimum);
+    return result;
+}
