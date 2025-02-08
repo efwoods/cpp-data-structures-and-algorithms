@@ -1,6 +1,9 @@
 #include "Algorithms.h"
 #include <iostream>
 #include <limits.h>
+#include <vector>
+#include <string>
+
 
 using namespace std;
 
@@ -128,9 +131,7 @@ void quickSort(int array[], int leftIndex, int rightIndex){
 }
 
 void removeElement(vector<int>& nums, int val){
-    vector<int>::iterator i = nums.begin();
     vector<int>::iterator j = nums.begin(); // j iterates through the array
-    int pop_counter = 0;
     int size = nums.size();
     if (size == 0){
         return;
@@ -142,22 +143,38 @@ void removeElement(vector<int>& nums, int val){
         return;
     }
     while(j != nums.end()){
-        while(i != nums.end() && *i == val){
-            i++;
-        }
-        if(i != nums.end()){
-            if (*j == val){
-                *j = *i;
-                *i = val;
-                pop_counter++;
-            }
+        if (*j == val){
+            nums.erase(j);
         } else {
-            while(pop_counter > 0){
-                nums.pop_back();
-                pop_counter--;
-            }
-            return;
+            j++;
         }
-        j++;
     }
+}
+
+vector<int> findMaxMin(vector<int>& myList){
+    vector<int> result;
+    int maximum = INT_MIN;
+    int minimum = INT_MAX;
+
+    for (int integer : myList){
+        if (integer > maximum){
+            maximum = integer;
+        }
+        if(integer < minimum){
+            minimum = integer;
+        }
+    }
+    result.push_back(maximum);
+    result.push_back(minimum);
+    return result;
+}
+
+string findLongestString(vector<string>& stringList){
+    string longestString = "";
+    for (auto string : stringList){
+        if (longestString.length() < string.length()){
+            longestString = string;
+        }
+    }
+    return longestString;
 }
