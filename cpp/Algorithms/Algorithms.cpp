@@ -1,4 +1,5 @@
 #include "Algorithms.h"
+#include <iostream>
 #include <limits.h>
 
 using namespace std;
@@ -124,4 +125,39 @@ void quickSort(int array[], int leftIndex, int rightIndex){
     int pivotIndex = pivot(array, leftIndex, rightIndex);
     quickSort(array, leftIndex, pivotIndex - 1);
     quickSort(array, pivotIndex+1, rightIndex);
+}
+
+void removeElement(vector<int>& nums, int val){
+    vector<int>::iterator i = nums.begin();
+    vector<int>::iterator j = nums.begin(); // j iterates through the array
+    int pop_counter = 0;
+    int size = nums.size();
+    if (size == 0){
+        return;
+    }
+    if(size == 1){
+        if(nums[0] == val){
+            nums.pop_back();
+        }
+        return;
+    }
+    while(j != nums.end()){
+        while(i != nums.end() && *i == val){
+            i++;
+        }
+        if(i != nums.end()){
+            if (*j == val){
+                *j = *i;
+                *i = val;
+                pop_counter++;
+            }
+        } else {
+            while(pop_counter > 0){
+                nums.pop_back();
+                pop_counter--;
+            }
+            return;
+        }
+        j++;
+    }
 }
