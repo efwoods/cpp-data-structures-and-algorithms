@@ -108,8 +108,9 @@ TEST(AlgorithmsTest, QuickSortTest){
 TEST(AlgorithmsTest, RemoveElement){
     cout << "Remove Elements Test Two Elements" << endl;
     vector<int> nums = {3, 1};
-    
-    printIntegers(nums);
+    vector<int> expected_values = {1};
+    int index;
+    // printIntegers(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 3));
     EXPECT_TRUE(nums[0] == 1);
@@ -118,12 +119,15 @@ TEST(AlgorithmsTest, RemoveElement){
     printIntegers(nums);
     
     // cout << "Remove Elements Test One Element Remove" << endl;
-    nums = {3};
-    
-    // printIntegers(nums);
+    nums = {10};
+    expected_values = {};
+    printIntegers(nums);
 
-    EXPECT_NO_THROW(removeElement(nums, 3));
+    EXPECT_NO_THROW(removeElement(nums, 10));
     EXPECT_TRUE(nums.size() == 0);
+    for(index = 0; index < expected_values.size(); index++){
+        EXPECT_TRUE(expected_values[index] == nums[index]);
+    }
 
     // printIntegers(nums);
 
@@ -164,10 +168,55 @@ TEST(AlgorithmsTest, RemoveElement){
     cout << " Test All Elements are Target" << endl;
     nums = {3, 3, 3, 3};
     
-    printIntegers(nums);
+    // printIntegers(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 3));
     EXPECT_TRUE(nums.size() == 0);
+
+    // printIntegers(nums);
+
+    // cout << "Multiple Target Elements" << endl;
+    nums = {1, 10, 2, 10, 3, 10, 4, 10, 5};
+    expected_values = {1, 2, 3, 4, 5};
+    
+    // printIntegers(nums);
+
+    EXPECT_NO_THROW(removeElement(nums, 10));
+    EXPECT_TRUE(nums.size() == 5);
+    for (index = 0; index < expected_values.size(); index++){
+        EXPECT_TRUE(expected_values[index] == nums[index]);
+    }
+
+    // printIntegers(nums);
+
+
+    // cout << "Test Target at Elements at End" << endl;
+    nums = {1, 2, 3, 10, 10};
+    expected_values = {1, 2, 3};
+    
+    // printIntegers(nums);
+
+    EXPECT_NO_THROW(removeElement(nums, 10));
+    EXPECT_TRUE(nums.size() == 3);
+    // cout << "Compare Values" << endl;
+    for (index = 0; index < expected_values.size(); index++){
+        EXPECT_TRUE(expected_values[index] == nums[index]);
+    }
+
+    // printIntegers(nums);
+
+    cout << "Test Target at Elements at Beginning" << endl;
+    nums = {10, 10, 1, 2, 3};
+    expected_values = {1, 2, 3};
+    
+    printIntegers(nums);
+
+    EXPECT_NO_THROW(removeElement(nums, 10));
+    EXPECT_TRUE(nums.size() == 3);
+    // cout << "Compare Values" << endl;
+    for (index = 0; index < expected_values.size(); index++){
+        EXPECT_TRUE(expected_values[index] == nums[index]);
+    }
 
     printIntegers(nums);
 }

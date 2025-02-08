@@ -128,10 +128,7 @@ void quickSort(int array[], int leftIndex, int rightIndex){
 }
 
 void removeElement(vector<int>& nums, int val){
-    vector<int>::iterator i = nums.begin();
     vector<int>::iterator j = nums.begin(); // j iterates through the array
-    int pop_counter = 0;
-    int detected_val = 0;
     int size = nums.size();
     if (size == 0){
         return;
@@ -143,26 +140,10 @@ void removeElement(vector<int>& nums, int val){
         return;
     }
     while(j != nums.end()){
-        while(i != nums.end() && *i == val){
-            i++;
-            pop_counter++;
-        }
-        if(i != nums.end()){
-            if (*j == val){
-                *j = *i;
-                *i = val;
-                pop_counter--;
-            }
+        if (*j == val){
+            nums.erase(j);
         } else {
-            while(pop_counter > 0){
-                if(*j == val){
-                    nums.pop_back();
-                    pop_counter--;
-                }
-                j++;
-            }
-            return;
+            j++;
         }
-        j++;
     }
 }
