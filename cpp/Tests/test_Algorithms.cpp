@@ -106,16 +106,16 @@ TEST(AlgorithmsTest, QuickSortTest){
 }
 
 TEST(AlgorithmsTest, RemoveElement){
-    // cout << "Remove Elements Test Two Elements" << endl;
+    cout << "Remove Elements Test Two Elements" << endl;
     vector<int> nums = {3, 1};
     
-    // printIntegers(nums);
+    printIntegers(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 3));
     EXPECT_TRUE(nums[0] == 1);
     EXPECT_TRUE(nums.size() == 1);
 
-    // printIntegers(nums);
+    printIntegers(nums);
     
     // cout << "Remove Elements Test One Element Remove" << endl;
     nums = {3};
@@ -147,10 +147,10 @@ TEST(AlgorithmsTest, RemoveElement){
 
     // printIntegers(nums);
 
-    // cout << "Remove Elements Test Multiple Elements" << endl;
+    cout << "Remove Elements Test Multiple Elements" << endl;
     nums = {3, 2, 3, 6, 3, 4, 5, 3};
     
-    // printIntegers(nums);
+    printIntegers(nums);
 
     EXPECT_NO_THROW(removeElement(nums, 3));
     EXPECT_TRUE(nums.size() == 4);
@@ -159,5 +159,15 @@ TEST(AlgorithmsTest, RemoveElement){
     EXPECT_TRUE(nums[2] == 4);
     EXPECT_TRUE(nums[3] == 5);
 
-    // printIntegers(nums);
+    printIntegers(nums);
+
+    cout << " Test All Elements are Target" << endl;
+    nums = {3, 3, 3, 3};
+    
+    printIntegers(nums);
+
+    EXPECT_NO_THROW(removeElement(nums, 3));
+    EXPECT_TRUE(nums.size() == 0);
+
+    printIntegers(nums);
 }

@@ -131,6 +131,7 @@ void removeElement(vector<int>& nums, int val){
     vector<int>::iterator i = nums.begin();
     vector<int>::iterator j = nums.begin(); // j iterates through the array
     int pop_counter = 0;
+    int detected_val = 0;
     int size = nums.size();
     if (size == 0){
         return;
@@ -144,17 +145,21 @@ void removeElement(vector<int>& nums, int val){
     while(j != nums.end()){
         while(i != nums.end() && *i == val){
             i++;
+            pop_counter++;
         }
         if(i != nums.end()){
             if (*j == val){
                 *j = *i;
                 *i = val;
-                pop_counter++;
+                pop_counter--;
             }
         } else {
             while(pop_counter > 0){
-                nums.pop_back();
-                pop_counter--;
+                if(*j == val){
+                    nums.pop_back();
+                    pop_counter--;
+                }
+                j++;
             }
             return;
         }
