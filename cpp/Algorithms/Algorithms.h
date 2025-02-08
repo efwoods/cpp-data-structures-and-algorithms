@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -12,3 +13,4 @@ int pivot(int array[], int leftIndex, int rightIndex);
 void quickSort(int array[], int leftIndex, int rightIndex);
 void removeElement(vector<int>& nums, int val);
 vector<int> findMaxMin(vector<int>& myList);
+string findLongestString(vector<string>& stringList);

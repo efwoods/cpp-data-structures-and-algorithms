@@ -2,6 +2,8 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include <limits.h>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -9,6 +11,14 @@ void printVector(vector<int> & nums){
     for(auto integer : nums){
         cout << integer << endl;
     }
+}
+
+void printVector(const vector<string>& strings) {
+    cout << "[ ";
+    for (const auto& str : strings) {
+        cout << "\"" << str << "\" ";
+    }
+    cout << "]";
 }
 
 TEST(AlgorithmsTest, BubbleSortTest){
@@ -284,4 +294,79 @@ TEST(AlgorithmsTest, FindMaxMinTest){
         // cout << "Input: "; printVector(nums); cout << "\n";
         // cout << "Output: "; printVector(result); cout << "\n";
         // cout << (result == expected ? "PASS\n" : "FAIL\n");
+}
+
+TEST(AlgorithmsTest, LongestStringTest){
+        // cout << "\n----- Test: SingleString -----\n";
+        vector<string> stringList = {"apple"};
+        string result = findLongestString(stringList);
+        string expected = "apple";
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(stringList); cout << "\n";
+        // cout << "Output: \"" << result << "\"\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: FirstStringIsLongest -----\n";
+        stringList = {"watermelon", "apple", "banana"};
+        result = findLongestString(stringList);
+        expected = "watermelon";
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(stringList); cout << "\n";
+        // cout << "Output: \"" << result << "\"\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+
+        cout << "\n----- Test: LastStringIsLongest -----\n";
+        stringList = {"apple", "banana", "watermelon"};
+        result = findLongestString(stringList);
+        expected = "watermelon";
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(stringList); cout << "\n";
+        // cout << "Output: \"" << result << "\"\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        cout << "\n----- Test: MiddleStringIsLongest -----\n";
+        stringList = {"apple", "watermelon", "banana"};
+        result = findLongestString(stringList);
+        expected = "watermelon";
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(stringList); cout << "\n";
+        // cout << "Output: \"" << result << "\"\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        cout << "\n----- Test: AllStringsSameLength -----\n";
+        stringList = {"apple", "melon", "fruit"};
+        result = findLongestString(stringList);
+        expected = "apple"; // since "apple" is the first string of that length
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(stringList); cout << "\n";
+        // cout << "Output: \"" << result << "\"\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        cout << "\n----- Test: EmptyList -----\n";
+        stringList = {};
+        result = findLongestString(stringList);
+        expected = "";
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(stringList); cout << "\n";
+        // cout << "Output: \"" << result << "\"\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        cout << "\n----- Test: SomeEmptyStrings -----\n";
+        stringList = {"apple", "", "banana", ""};
+        result = findLongestString(stringList);
+        expected = "banana";
+        EXPECT_TRUE(result == expected);
+        // cout << "Input: "; printVector(stringList); cout << "\n";
+        // cout << "Output: \"" << result << "\"\n";
+        // cout << (result == expected ? "PASS\n" : "FAIL\n");
+
+        cout << "\n----- Test: DifferentCharacterStrings -----\n";
+        stringList = {"12345", "b@n@n@", "apple!"};
+        result = findLongestString(stringList);
+        expected = "b@n@n@";
+        EXPECT_TRUE(result == expected);
+        cout << "Input: "; printVector(stringList); cout << "\n";
+        cout << "Output: \"" << result << "\"\n";
+        cout << (result == expected ? "PASS\n" : "FAIL\n");
 }

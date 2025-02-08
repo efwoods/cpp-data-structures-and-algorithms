@@ -1,6 +1,9 @@
 #include "Algorithms.h"
 #include <iostream>
 #include <limits.h>
+#include <vector>
+#include <string>
+
 
 using namespace std;
 
@@ -164,4 +167,14 @@ vector<int> findMaxMin(vector<int>& myList){
     result.push_back(maximum);
     result.push_back(minimum);
     return result;
+}
+
+string findLongestString(vector<string>& stringList){
+    string longestString = "";
+    for (auto string : stringList){
+        if (longestString.length() < string.length()){
+            longestString = string;
+        }
+    }
+    return longestString;
 }
