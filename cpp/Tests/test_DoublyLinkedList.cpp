@@ -464,3 +464,26 @@ TEST(DoublyLinkedListTest, DeleteInvalidIndex){
     EXPECT_TRUE(dll.getLength() == 2);
     // checkTestResult(dll.getLength() == 2);
 }
+
+TEST(DoublyLinkedListTest, DeleteInMiddleTest){
+    cout << "\n------ DoublyLinkedList Test: DeleteInMiddle ------\n";
+
+    DoublyLinkedList dll(5);
+    dll.append(10);
+    dll.append(15);
+    
+    cout << "Before: ";
+    dll.printList();
+    
+    dll.deleteNode(1);
+    
+    cout << "deleteNode(1)\n";
+    
+    cout << "After: ";
+    dll.printList();
+    
+    EXPECT_TRUE(dll.getLength() == 2);
+    EXPECT_TRUE(dll.get(1)->value == 15);
+    // checkTestResult(dll.getLength() == 2 &&
+                    // dll.get(1)->value == 15);
+}
