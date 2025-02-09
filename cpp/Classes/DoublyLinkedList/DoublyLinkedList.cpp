@@ -90,7 +90,7 @@ void DoublyLinkedList::deleteFirst(){
 Node* DoublyLinkedList::get(int index){
     if (index == 0){
         return head;
-    } else if (index >= length) {
+    } else if (index >= length || index < 0) {
         return nullptr;
     } else {
         Node* temp;
@@ -191,11 +191,11 @@ void DoublyLinkedList::insert(int index, int value){
 }
 
 void DoublyLinkedList::deleteNode(int index){
-    if (length == 0){
+    if (length == 0 || index > length || index < 0){
         return;
-    } else if (index >= length - 1) {
+    } else if (index == length - 1) {
         deleteLast();
-    } else if (index <= 0){
+    } else if (index == 0){
         deleteFirst();
     } else {
         int i = 0;

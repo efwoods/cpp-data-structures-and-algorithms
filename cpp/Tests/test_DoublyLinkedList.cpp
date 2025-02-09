@@ -427,3 +427,63 @@ TEST(DoublyLinkedListTest, SwapPairs){
     EXPECT_TRUE(list->get(5)->value == 4);
     EXPECT_TRUE(list->get(6)->value == 6);
 }
+
+TEST(DoublyLinkedListTest, GetInvalidIndex){
+        // cout << "\n------- DLL Test: Get Invalid Index -------\n";
+        
+        DoublyLinkedList dll(5);
+        dll.append(10);
+        
+        // cout << "Before get: ";
+        // dll.printList();
+        
+        Node* result1 = dll.get(-1);
+        Node* result2 = dll.get(2);
+        
+        // cout << "Value at index -1: " << ptrToNum(result1) << endl;
+        // cout << "Value at index 2: " << ptrToNum(result2) << endl;
+}
+
+TEST(DoublyLinkedListTest, DeleteInvalidIndex){
+    // cout << "\n------ DoublyLinkedList Test: DeleteInvalidIndex ------\n";
+
+    DoublyLinkedList dll(5);
+    dll.append(10);
+    
+    cout << "Before: ";
+    dll.printList();
+    
+    dll.deleteNode(-1);
+    dll.deleteNode(3);
+    
+    cout << "deleteNode(-1), deleteNode(3)\n";
+    
+    cout << "After: ";
+    dll.printList();
+    
+    EXPECT_TRUE(dll.getLength() == 2);
+    // checkTestResult(dll.getLength() == 2);
+}
+
+TEST(DoublyLinkedListTest, DeleteInMiddleTest){
+    cout << "\n------ DoublyLinkedList Test: DeleteInMiddle ------\n";
+
+    DoublyLinkedList dll(5);
+    dll.append(10);
+    dll.append(15);
+    
+    cout << "Before: ";
+    dll.printList();
+    
+    dll.deleteNode(1);
+    
+    cout << "deleteNode(1)\n";
+    
+    cout << "After: ";
+    dll.printList();
+    
+    EXPECT_TRUE(dll.getLength() == 2);
+    EXPECT_TRUE(dll.get(1)->value == 15);
+    // checkTestResult(dll.getLength() == 2 &&
+                    // dll.get(1)->value == 15);
+}
