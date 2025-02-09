@@ -191,3 +191,61 @@ TEST(BinarySearchTreeTest, DepthFirstSearchInOrder){
 
     EXPECT_NO_THROW(bst->DFSInOrder());
 }
+
+TEST(BinarySearchTreeTest, RecursiveInsertIntoEmptyTree){
+        cout << "\n----- Test: rInsert into Empty Tree -----\n";
+        BinarySearchTree bst;
+        int valueToInsert = 42;
+        bst.rInsert(valueToInsert);
+        EXPECT_TRUE(bst.rContains(42));
+        // cout << "Inserting value " << valueToInsert << " into an empty tree.\n";
+        // cout << "EXPECTED: Node with value 42 exists\n";
+        // cout << (bst.rContains(42) ? "PASS\n" : "FAIL\n");
+    }
+
+TEST(BinarySearchTreeTest, RecursiveInsertUniqueValues){
+        cout << "\n----- Test: rInsert Unique Values -----\n";
+        BinarySearchTree bst;
+        bst.rInsert(10);
+        bst.rInsert(5);
+        bst.rInsert(15);
+        for(int i : {10, 5, 15}){
+            EXPECT_TRUE(bst.rContains(i));
+        }
+        // cout << "Inserting unique values 10, 5, 15.\n";
+        // cout << "EXPECTED: Each value is contained within the tree\n";
+        // cout << (bst.rContains(10) && bst.rContains(5) && bst.rContains(15) ? "PASS\n" : "FAIL\n");
+    }
+
+TEST(BinarySearchTreeTest, RecursiveInsertDuplicateValue){
+        cout << "\n----- Test: rInsert Duplicate Value -----\n";
+        BinarySearchTree bst;
+        bst.rInsert(10);
+        EXPECT_NO_THROW(bst.rInsert(10)); // Attempting duplicate insert
+        EXPECT_TRUE(bst.rContains(10));
+        // cout << "Inserting value 10 twice.\n";
+        // Note: rInsert does not explicitly handle duplicates; it depends on tree structure verification
+        // cout << "EXPECTED: Tree structure unchanged by duplicate insert\n";
+        // cout << (bst.rContains(10) ? "PASS\n" : "FAIL\n");
+    }
+
+TEST(BinarySearchTreeTest, RecursiveInsertToFormComplexStructure){
+        cout << "\n----- Test: rInsert to Form Complex Structure -----\n";
+        BinarySearchTree bst;
+        // Inserting multiple values to form a more complex tree structure
+        bst.rInsert(50);
+        bst.rInsert(30);
+        bst.rInsert(70);
+        bst.rInsert(20);
+        bst.rInsert(40);
+        bst.rInsert(60);
+        bst.rInsert(80);
+        for(int i : {50, 30, 70, 20, 40, 60, 80}){
+            EXPECT_TRUE(bst.contains(i));
+        }
+        // cout << "Inserting values to form a complex tree structure.\n";
+        // cout << "EXPECTED: All inserted values are correctly contained within the tree\n";
+        // cout << (bst.rContains(50) && bst.rContains(30) && bst.rContains(70) &&
+                //  bst.rContains(20) && bst.rContains(40) && bst.rContains(60) &&
+                //  bst.rContains(80) ? "PASS\n" : "FAIL\n");
+    }

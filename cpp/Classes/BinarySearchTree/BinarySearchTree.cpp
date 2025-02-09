@@ -38,6 +38,27 @@ bool BinarySearchTree::insert(int value){
     }
 }
 
+Node* BinarySearchTree::rInsert(Node* currentNode, int value){
+    if (currentNode == nullptr){
+        Node* newNode = new Node(value);
+        return newNode;
+    }
+
+    if (currentNode->value == value) return currentNode;
+
+    if (value < currentNode->value) {
+        currentNode->left = rInsert(currentNode->left, value);
+    } else {
+        currentNode->right = rInsert(currentNode->right, value);
+    }
+
+    return currentNode;
+}
+
+void BinarySearchTree::rInsert(int value){
+    root = rInsert(root, value);
+}
+
 bool BinarySearchTree::contains(int value){
     Node* temp = root;
     while(temp != nullptr){
