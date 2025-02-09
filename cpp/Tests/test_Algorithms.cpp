@@ -490,3 +490,71 @@ TEST(AlgorithmsTest, MaxProfitTest){
         // cout << "Profit: " << profit << "\n";
         // cout << (profit == 4 ? "PASS\n" : "FAIL\n");
 }
+
+TEST(AlgorithmsTest, RotateTest){
+        vector<int> expected_values;
+        // BasicTestCases
+        // cout << "\n----- Basic Test Cases -----\n";
+
+
+        vector<int> nums1 = {1, 2, 3, 4, 5, 6, 7};
+        expected_values = {6,7,1,2,3,4,5};
+        algorithmRotate(nums1, 2);
+        EXPECT_TRUE(nums1 == expected_values);
+        // cout << "EXPECTED: [6, 7, 1, 2, 3, 4, 5], RETURNED: ";
+        // printVector(nums1);
+        // cout << "\n";
+
+        vector<int> nums2 = {1, 2, 3, 4, 5};
+        algorithmRotate(nums2, 7);
+        expected_values = {4,5,1,2,3};
+        EXPECT_TRUE(nums2 == expected_values);
+        // cout << "EXPECTED: [4, 5, 1, 2, 3], RETURNED: ";
+        // printVector(nums2);
+        // cout << "\n";
+
+        vector<int> nums3 = {1, 2, 3};
+        algorithmRotate(nums3, 0);
+        expected_values = {1,2,3};
+        EXPECT_TRUE(nums3 == expected_values);
+        // cout << "EXPECTED: [1, 2, 3], RETURNED: ";
+        // printVector(nums3);
+        // cout << "\n";
+
+        vector<int> nums4 = {1, 2, 3, 4, 5};
+        algorithmRotate(nums4, 5);
+        expected_values = {1,2,3,4,5};
+        EXPECT_TRUE(nums4 == expected_values);
+        // cout << "EXPECTED: [1, 2, 3, 4, 5], RETURNED: ";
+        // printVector(nums4);
+        // cout << "\n";
+
+        // EdgeCases
+        // cout << "\n----- Edge Cases -----\n";
+
+        vector<int> nums5;
+        algorithmRotate(nums5, 4);
+        expected_values.clear();
+        EXPECT_TRUE(nums5 == expected_values);
+        // cout << "EXPECTED: [], RETURNED: ";
+        // printVector(nums1);
+        // cout << "\n";
+
+        vector<int> nums6 = {1};
+        expected_values = {1};
+        algorithmRotate(nums6, 3);
+        EXPECT_TRUE(nums6 == expected_values);
+        // cout << "EXPECTED: [1], RETURNED: ";
+        // printVector(nums2);
+        // cout << "\n";
+
+    // LargeTestCases
+        // cout << "\n----- Large Test Cases -----\n";
+
+        vector<int> nums7(100000, 5);  // 100,000 entries all with the value 5
+        nums7[50000] = 10;
+        algorithmRotate(nums7, 50001);
+        EXPECT_TRUE(nums7[0] == 5);
+        EXPECT_TRUE(nums7[1] == 10);
+        // cout << "After rotation, first element: " << nums[0] << ", second element: " << nums[1] << "\n";
+}

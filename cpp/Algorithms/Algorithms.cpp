@@ -259,3 +259,44 @@ int maxProfit(vector<int>& prices){
 
     return maxProfit;
 }
+
+void reverse(vector<int>& nums, vector<int>::iterator leftIndexPtr,vector<int>::iterator rightIndexPtr, int arraySize){
+    int temp;
+    for (int counter = 0; counter < arraySize / 2; counter++){
+        temp = *leftIndexPtr;
+        *leftIndexPtr = *rightIndexPtr;
+        *rightIndexPtr = temp;
+        leftIndexPtr++;
+        rightIndexPtr--;
+    }
+}
+
+void algorithmRotate(vector<int>& nums, int k){
+    if (nums.size() < 2 || nums.empty()){
+        return;
+    }
+    vector<int>::iterator leftIndexPtr;
+    vector<int>::iterator rightIndexPtr; 
+    int arraySize;
+    int rotation = k % nums.size();
+    for(int iteration = 0; iteration < 3; iteration++){
+        leftIndexPtr = nums.begin();
+        rightIndexPtr = prev(nums.end());
+        switch(iteration){
+            case 0:
+                arraySize = nums.size();
+                break;
+            case 1:
+                leftIndexPtr += rotation;
+                arraySize = nums.size() - rotation;
+                break;
+            case 2:
+                arraySize = rotation;
+                rightIndexPtr -= (nums.size() - rotation); // move the right pointer backwards
+                break;
+            default:
+                break;
+        }
+        reverse(nums, leftIndexPtr, rightIndexPtr, arraySize);
+    }
+}

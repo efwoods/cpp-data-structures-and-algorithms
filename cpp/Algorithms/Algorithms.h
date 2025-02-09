@@ -16,3 +16,5 @@ vector<int> findMaxMin(vector<int>& myList);
 string findLongestString(vector<string>& stringList);
 int removeDuplicates(vector<int>& nums);
 int maxProfit(vector<int>& prices);
+void algorithmRotate(vector<int>& nums, int k);
+int reverse(int array[], int leftIndex, int rightIndex);
