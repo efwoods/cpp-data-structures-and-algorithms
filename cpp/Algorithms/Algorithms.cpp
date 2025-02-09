@@ -3,7 +3,10 @@
 #include <limits.h>
 #include <vector>
 #include <string>
-
+#include <unordered_map>
+#include <unordered_set>
+#include <set>
+// #include <prev>
 
 using namespace std;
 
@@ -209,4 +212,50 @@ int removeDuplicates(vector<int>& nums){
         }
     }
     return nums.size();
+}
+
+int maxProfit(vector<int>& prices){
+    if(prices.size() < 2){
+        return 0;
+    }
+
+    unordered_map<int, int> pricesMap;
+    auto prices_set_iter = prices.begin();
+    int minPrice = INT_MAX;
+    int maxProfit = 0;
+    auto pricesSize = prices.size();
+    unordered_set<int> unique_values;
+    set<int> ordered_unique_values;
+    int current_profit;
+    int starting_price;
+    int selling_price;
+
+    for(int dayIndex = 0; dayIndex < pricesSize; dayIndex++, prices_set_iter++) {
+        if(prices[dayIndex] < minPrice){
+            minPrice = prices[dayIndex];
+        }
+        if(pricesMap.find(prices[dayIndex]) != pricesMap.end()){ // if the price on a given day is in the map; continue to the next day; The unordered set of subsequent prices will already acount for profits at the current price.
+            continue;
+        }
+        unique_values.clear(); // clear the unique values
+        unique_values = {prices_set_iter+1, prices.end()}; // collect all unique values that come after the current key; 
+        // unique_values.insert(prices_set_iter+1, prices.end()); 
+        if(unique_values.empty()){
+            continue;
+        }
+        ordered_unique_values.clear();
+        ordered_unique_values.insert(unique_values.begin(), unique_values.end()); // order the values from least to greatest
+        starting_price = prices[dayIndex];
+        selling_price = *prev(ordered_unique_values.end());
+        current_profit = selling_price - starting_price; // calculate the profit
+        pricesMap[prices[dayIndex]] = current_profit; // get the last element in the ordered set
+    }
+
+    for(auto pair : pricesMap){
+        if(maxProfit < pair.second){
+            maxProfit = pair.second;
+        }
+    }
+
+    return maxProfit;
 }
