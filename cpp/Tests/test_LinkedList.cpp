@@ -370,6 +370,44 @@ void printTestReverseList(){
     myList->~LinkedList();
 }
 
+TEST(LinkedListTest, DeleteOutOfBoundsTest){
+        // cout << "\n------ LinkedList Test: DeleteOutOfBounds ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+        
+        // cout << "Before: ";
+        ll.printList();
+        
+        ll.deleteNode(2);
+        
+        // cout << "deleteNode( 2 )\n";
+        
+        // cout << "After: ";
+        ll.printList();
+        
+        EXPECT_TRUE(ll.getLength() == 2);
+}
+
+TEST(LinkedListTest, DeleteIndexNegativeTest){
+        // cout << "\n------ LinkedList Test: DeleteInvalidIndexNegative ------\n";
+
+        LinkedList ll(1);
+        
+        cout << "Before: ";
+        ll.printList();
+        
+        ll.deleteNode(-1);
+        
+        cout << "deleteNode( -1 )\n";
+        
+        cout << "After: ";
+        ll.printList();
+        
+        EXPECT_TRUE(ll.getLength() == 1);
+        // checkTestResult(ll.getLength() == 1);
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
 
