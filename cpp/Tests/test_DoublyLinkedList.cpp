@@ -427,3 +427,19 @@ TEST(DoublyLinkedListTest, SwapPairs){
     EXPECT_TRUE(list->get(5)->value == 4);
     EXPECT_TRUE(list->get(6)->value == 6);
 }
+
+TEST(DoublyLinkedListTest, GetInvalidIndex){
+        // cout << "\n------- DLL Test: Get Invalid Index -------\n";
+        
+        DoublyLinkedList dll(5);
+        dll.append(10);
+        
+        // cout << "Before get: ";
+        // dll.printList();
+        
+        Node* result1 = dll.get(-1);
+        Node* result2 = dll.get(2);
+        
+        // cout << "Value at index -1: " << ptrToNum(result1) << endl;
+        // cout << "Value at index 2: " << ptrToNum(result2) << endl;
+}

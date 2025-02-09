@@ -9,7 +9,7 @@
                 "-g",
                 "-o",
                 "bin/${fileBasenameNoExtension}", // output binary name
-                "../Classes/LinkedList/LinkedList.cpp", // Implementation file
+                "../Classes/DoublyLinkedList/DoublyLinkedList.cpp", // Implementation file
                 "${fileBasename}", // Compile the test file, 
                 "-lgtest", 
                 "-lgtest_main", 

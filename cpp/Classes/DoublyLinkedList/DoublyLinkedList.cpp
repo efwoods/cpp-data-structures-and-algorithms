@@ -90,7 +90,7 @@ void DoublyLinkedList::deleteFirst(){
 Node* DoublyLinkedList::get(int index){
     if (index == 0){
         return head;
-    } else if (index >= length) {
+    } else if (index >= length || index < 0) {
         return nullptr;
     } else {
         Node* temp;
