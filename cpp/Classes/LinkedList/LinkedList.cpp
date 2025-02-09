@@ -101,7 +101,7 @@ bool LinkedList::set(int index, int value){
         return false;
     } else if (index == 0){
         head->value = value;
-    } else if (index >= length) {
+    } else if (index >= length || index < 0) {
         return false;
     } else {
         Node *temp = head;

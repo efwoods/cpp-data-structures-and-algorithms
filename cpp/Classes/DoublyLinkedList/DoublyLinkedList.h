@@ -27,8 +27,8 @@ class DoublyLinkedList{
         void prepend(int value);
         void deleteFirst();
         Node* get(int index);
-        void set(int index, int value);
-        void insert(int index, int value);
+        bool set(int index, int value);
+        bool insert(int index, int value);
         void deleteNode(int index);
         void reverse();
         bool isPalindrome();

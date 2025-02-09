@@ -98,13 +98,13 @@ TEST(DoublyLinkedListTest, Set){
     EXPECT_TRUE(list->getHead() == nullptr);
 
     list->set(0, 1);
-    EXPECT_TRUE(list->get(0)->value == 1);
+    EXPECT_TRUE(list->get(0) == nullptr);
 
     list->set(0, 2);
-    EXPECT_TRUE(list->get(0)->value == 2);
+    EXPECT_TRUE(list->get(0) == nullptr);
 
     list->set(12, 3);
-    EXPECT_TRUE(list->get(0)->value == 2);
+    EXPECT_TRUE(list->get(0) == nullptr);
 
 }
 
@@ -116,8 +116,8 @@ TEST(DoublyLinkedListTest, Insert){
     EXPECT_TRUE(list->getHead() == nullptr);
 
     // Test empty list length less
-    list->insert(-1, 0);
-    EXPECT_TRUE(list->getHead()->value == 0);
+    EXPECT_FALSE(list->insert(-1, 0));
+    EXPECT_TRUE(list->getHead() == nullptr);
 
     // Set empty list
     list->deleteFirst();
@@ -132,21 +132,22 @@ TEST(DoublyLinkedListTest, Insert){
     EXPECT_TRUE(list->getHead() == nullptr);
 
     // Test empty list length greater
-    list->insert(6, 0);
-    EXPECT_TRUE(list->getHead()->value == 0);
+    EXPECT_FALSE(list->insert(6, 0));
+    EXPECT_TRUE(list->getHead() == nullptr);
 
 
     // Test list index == length
-    list->insert(1, 1);
+    EXPECT_TRUE(list->insert(0, 0));
+    EXPECT_TRUE(list->insert(1, 1));
     EXPECT_TRUE(list->get(1)->value == 1);
 
     // Test list index > length
     list->insert(15, 2);
-    EXPECT_TRUE(list->get(2)->value == 2);
+    EXPECT_TRUE(list->get(2) == nullptr);
 
     // Test list index < length
-    list->insert(-1, -1);
-    EXPECT_TRUE(list->getHead()->value == -1);
+    EXPECT_FALSE(list->insert(-1, -1));
+    EXPECT_TRUE(list->getHead()->value == 0);
 
     list->printList();
     // Test insert at index closer to head
@@ -189,21 +190,21 @@ TEST(DoublyLinkedListTest, DeleteNode){
     // Test delete last greater than length
     list->deleteNode(1234);
     EXPECT_TRUE(list->get(0)->value == 0);
-    EXPECT_TRUE(list->get(1) == nullptr);
+    EXPECT_TRUE(list->get(1)->value == 2);
 
     // Populate for testing
-    list->append(1);
+    list->set(1, 1);
     EXPECT_TRUE(list->get(0)->value == 0);
     EXPECT_TRUE(list->get(1)->value == 1);
 
     // Test delete first less than length
     list->deleteNode(-1342);
-    EXPECT_TRUE(list->get(0)->value == 1);
-    EXPECT_TRUE(list->get(1) == nullptr);
+    EXPECT_TRUE(list->get(0)->value == 0);
+    EXPECT_TRUE(list->get(1)->value == 1);
 
     // Populate list for testing
     list->set(0, 0);
-    list->insert(1, 1);
+    list->set(1, 1);
     list->insert(2, 2);
 
     EXPECT_TRUE(list->get(0)->value == 0);
