@@ -442,3 +442,51 @@ TEST(AlgorithmsTest, RemoveDuplicatesTest){
         // }
         // cout << (pass ? "PASS\n" : "FAIL\n");
 }
+
+TEST(AlgorithmsTest, MaxProfitTest){
+        // cout << "\n----- Test: IncreasingPrices -----\n";
+        vector<int> prices = {1, 2, 3, 4, 5};
+        int expected_value = 0;
+        // cout << "Prices: "; printVector(prices); cout << "\n";
+        int profit = maxProfit(prices);
+        // cout << "Profit: " << profit << "\n";
+        // cout << (profit == 4 ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: DecreasingPrices -----\n";
+        prices = {5, 4, 3, 2, 1};
+        expected_value = 0;
+        // cout << "Prices: "; printVector(prices); cout << "\n";
+        profit = maxProfit(prices);
+        EXPECT_TRUE(profit == expected_value);
+        // cout << "Profit: " << profit << "\n";
+        // cout << (profit == 0 ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: LargeTestCase1 -----\n";
+        prices = vector<int>(100000, 5); // 100,000 entries all with the value 5
+        // cout << "Prices: (too many to print) \n"; 
+        expected_value = 0;
+        profit = maxProfit(prices);
+        EXPECT_TRUE(profit == expected_value);
+        // cout << "Profit: " << profit << "\n";
+        // cout << (profit == 0 ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: LargeTestCase2 -----\n";
+        prices = vector<int>(100000, 5); // 100,000 entries all with the value 5
+        prices[99999] = 10; // change last item to 10
+        expected_value = 5;
+        // cout << "Prices: (too many to print) \n"; 
+        profit = maxProfit(prices);
+        EXPECT_TRUE(profit == expected_value);
+        // cout << "Profit: " << profit << "\n";
+        // cout << (profit == 5 ? "PASS\n" : "FAIL\n");
+
+        // cout << "\n----- Test: LargeTestCase3 -----\n";
+        prices = vector<int>(100000, 5); // 100,000 entries all with the value 5
+        prices[0] = 1; // change first item to 1
+        expected_value = 4;
+        // cout << "Prices: (too many to print) \n"; 
+        profit = maxProfit(prices);
+        EXPECT_TRUE(profit == expected_value);
+        // cout << "Profit: " << profit << "\n";
+        // cout << (profit == 4 ? "PASS\n" : "FAIL\n");
+}
