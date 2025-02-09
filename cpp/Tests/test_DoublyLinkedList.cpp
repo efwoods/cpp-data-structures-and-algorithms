@@ -443,3 +443,24 @@ TEST(DoublyLinkedListTest, GetInvalidIndex){
         // cout << "Value at index -1: " << ptrToNum(result1) << endl;
         // cout << "Value at index 2: " << ptrToNum(result2) << endl;
 }
+
+TEST(DoublyLinkedListTest, DeleteInvalidIndex){
+    // cout << "\n------ DoublyLinkedList Test: DeleteInvalidIndex ------\n";
+
+    DoublyLinkedList dll(5);
+    dll.append(10);
+    
+    cout << "Before: ";
+    dll.printList();
+    
+    dll.deleteNode(-1);
+    dll.deleteNode(3);
+    
+    cout << "deleteNode(-1), deleteNode(3)\n";
+    
+    cout << "After: ";
+    dll.printList();
+    
+    EXPECT_TRUE(dll.getLength() == 2);
+    // checkTestResult(dll.getLength() == 2);
+}
