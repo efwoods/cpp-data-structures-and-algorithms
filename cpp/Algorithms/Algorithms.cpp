@@ -300,3 +300,29 @@ void algorithmRotate(vector<int>& nums, int k){
         reverse(nums, leftIndexPtr, rightIndexPtr, arraySize);
     }
 }
+
+int max(int element, int sum){
+    if (element > sum){
+        return element;
+    } else {
+        return sum;
+    }
+}
+
+int maxSubarray(vector<int>& nums){
+    if(nums.empty()){
+        return 0;
+    }
+    if(nums.size() == 1){
+        return nums[0];
+    }
+
+    int current_max = nums[0];
+    int overall_max = nums[0];
+
+    for(int index = 1; index < nums.size(); index++){
+        current_max = max(nums[index], current_max + nums[index]);
+        overall_max = max(overall_max, current_max);
+    }
+    return overall_max;
+}

@@ -558,3 +558,51 @@ TEST(AlgorithmsTest, RotateTest){
         EXPECT_TRUE(nums7[1] == 10);
         // cout << "After rotation, first element: " << nums[0] << ", second element: " << nums[1] << "\n";
 }
+
+TEST(AlgorithmsTest, MaxSubarrayTest){
+        int expected_value;
+        // PositiveNumbersOnly
+        vector<int> nums = {1, 2, 3, 4, 5};
+        int returnedResult = maxSubarray(nums);
+        expected_value = 15;
+        EXPECT_TRUE(returnedResult == expected_value);
+        // cout << "\n----- Positive Numbers Only -----\n";
+        // cout << "Input Vector: "; printVector(nums); cout << "\n";
+        // cout << "EXPECTED: 15, RETURNED: " << returnedResult << "\n";
+
+    // NegativeNumbersOnly
+        nums = {-1, -2, -3, -4, -5};
+        expected_value = -1;
+        returnedResult = maxSubarray(nums);
+        EXPECT_TRUE(returnedResult == expected_value);
+        // cout << "\n----- Negative Numbers Only -----\n";
+        // cout << "Input Vector: "; printVector(nums); cout << "\n";
+        // cout << "EXPECTED: -1, RETURNED: " << returnedResult << "\n";
+
+    // MixOfPositiveAndNegativeNumbers
+        nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        returnedResult = maxSubarray(nums);
+        expected_value = 6;
+        EXPECT_TRUE(returnedResult == expected_value);
+        // cout << "\n----- Mix of Positive and Negative Numbers -----\n";
+        // cout << "Input Vector: "; printVector(nums); cout << "\n";
+        // cout << "EXPECTED: 6, RETURNED: " << returnedResult << "\n";
+
+    // SingleElement
+        nums = {4};
+        returnedResult = maxSubarray(nums);
+        expected_value = 4;
+        EXPECT_TRUE(returnedResult == expected_value);
+        // cout << "\n----- Single Element -----\n";
+        // cout << "Input Vector: "; printVector(nums); cout << "\n";
+        // cout << "EXPECTED: 4, RETURNED: " << returnedResult << "\n";
+
+    // EmptyList
+        nums = {};
+        returnedResult = maxSubarray(nums);
+        expected_value = 0;
+        EXPECT_TRUE(returnedResult == expected_value);
+        // cout << "\n----- Empty List -----\n";
+        // cout << "Input Vector: "; printVector(nums); cout << "\n";
+        // cout << "EXPECTED: 0, RETURNED: " << returnedResult << "\n";
+}

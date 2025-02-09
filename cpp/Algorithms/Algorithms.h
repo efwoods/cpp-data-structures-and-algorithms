@@ -18,3 +18,5 @@ int removeDuplicates(vector<int>& nums);
 int maxProfit(vector<int>& prices);
 void algorithmRotate(vector<int>& nums, int k);
 int reverse(int array[], int leftIndex, int rightIndex);
+int maxSubarray(vector<int>& nums);
+int max(int element, int sum);
