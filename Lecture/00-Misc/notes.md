@@ -1,0 +1,13 @@
+- If there are two variables, a & b, in separate for loops, it is O(a + b).
+- If there are two variables, a & b, in nested for loops, it is O(a*b).
+- pushing and popping elements from the end of a list are O(1).
+- adding or removing elements from the beginning of a vector are O(n) because of the reindexing of all of the values.
+- inserting an element into a vector is O(n) (worst case). 
+- finding an item by value is an O(n) operation.
+- finding an item by index is O(1). It is possible to go directly to that location of the index in memory.
+- There are five main operations (from fastest to slowest):
+  - O(1): 1 operation regardless of size; Constant
+  - O(logn): how many times does it take to divide a list in half until you have 1 element? Divide and conquer
+  - O(n): 1 operation for each iteration of n; Proportional
+  - O(nlogn): This is the fastest runtime for sorting algorithms
+  - O(n^2): This is a double nested for loop; n*n operations for each value of n; Loop within a loop;
