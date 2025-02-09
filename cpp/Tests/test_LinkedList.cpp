@@ -405,8 +405,232 @@ TEST(LinkedListTest, DeleteIndexNegativeTest){
         ll.printList();
         
         EXPECT_TRUE(ll.getLength() == 1);
-        // checkTestResult(ll.getLength() == 1);
 }
+
+TEST(LinkedListTest, MakeEmptyTest){
+    LinkedList ll(0);
+    ll.makeEmpty();
+    EXPECT_TRUE(ll.getHead() == nullptr);
+    EXPECT_TRUE(ll.getTail() == nullptr);
+    EXPECT_TRUE(ll.getLength() == 0);
+}
+
+TEST(LinkedListTest, SetElementInNonEmptyList){
+    cout << "\n------ LinkedList Test: SetElementInNonEmptyList ------\n";
+    
+    LinkedList ll(1);
+    ll.append(2);
+    ll.append(3);
+    
+    cout << "Before: ";
+    ll.printList();
+    
+    bool result = ll.set(1, 4);
+    
+    cout << "set(1, 4)\n";
+    
+    cout << "After: ";
+    ll.printList();
+    EXPECT_TRUE(result);
+    EXPECT_TRUE(ll.get(1)->value == 4);    
+}
+
+TEST(LinkedListTest, SetElementInSingleItemList){
+    cout << "\n------ LinkedList Test: SetElementInSingleItemList ------\n";
+    
+    LinkedList ll(1);
+    
+    cout << "Before: ";
+    ll.printList();
+    
+    bool result = ll.set(0, 2);
+    
+    cout << "set(0, 2)\n";
+    
+    cout << "After: ";
+    ll.printList();
+    EXPECT_TRUE(result);
+    EXPECT_TRUE(ll.get(0)->value == 2);    
+}
+
+TEST(LinkedListTest, SetElementInEmptyList){
+    cout << "\n------ LinkedList Test: SetElementInEmptyList ------\n";
+    
+    LinkedList ll(1);
+    ll.makeEmpty();
+    
+    cout << "Before: ";
+    ll.printList();
+    
+    bool result = ll.set(0, 2);
+    
+    cout << "set(0, 2)\n";
+    
+    cout << "After: ";
+    ll.printList();
+    EXPECT_FALSE(result);    
+    EXPECT_TRUE(ll.getLength() == 0);
+    EXPECT_TRUE(ll.getHead() == nullptr);
+    EXPECT_TRUE(ll.getTail() == nullptr);
+}
+
+TEST(LinkedListTest, SetIndexOutofBounds){
+    cout << "\n------ LinkedList Test: SetIndexOutOfBounds ------\n";
+    
+    LinkedList ll(1);
+    ll.append(2);
+    ll.append(3);
+    
+    cout << "Before: ";
+    ll.printList();
+    
+    bool result = ll.set(3, 4);
+    
+    cout << "set(3, 4)\n";
+    
+    cout << "After: ";
+    ll.printList();
+
+    EXPECT_FALSE(result);    
+}
+
+TEST(LinkedListTest, SetElementAndCheckOtherValues){
+    cout << "\n------ LinkedList Test: SetElementAndCheckOtherValues ------\n";
+    
+    LinkedList ll(1);
+    ll.append(2);
+    ll.append(3);
+    
+    cout << "Before: ";
+    ll.printList();
+    
+    ll.set(1, 4);
+    
+    cout << "set(1, 4)\n";
+    
+    cout << "After: ";
+    ll.printList();
+    
+    bool result = (ll.get(0)->value == 1) && (ll.get(2)->value == 3);
+    EXPECT_TRUE(result);
+}
+
+TEST(LinkedListTest, InsertAtBeginning){
+        cout << "\n------ LinkedList Test: InsertAtBeginning ------\n";
+        
+        LinkedList ll(1);
+        ll.append(2);
+        
+        cout << "Before: ";
+        ll.printList();
+        
+        bool result = ll.insert(0, 0);
+        
+        cout << "insert( 0, 0 )\n";
+        
+        cout << "After: ";
+        ll.printList();
+
+        EXPECT_TRUE(result);
+        EXPECT_TRUE(ll.get(0)->value == 0);        
+    }
+
+    TEST(LinkedListTest, InsertAtEnd){
+        cout << "\n------ LinkedList Test: InsertAtEnd ------\n";
+        
+        LinkedList ll(1);
+        ll.append(2);
+        
+        cout << "Before: ";
+        ll.printList();
+        
+        bool result = ll.insert(2, 3);
+        
+        cout << "insert( 2, 3 )\n";
+        
+        cout << "After: ";
+        ll.printList();
+        
+        EXPECT_TRUE(result);
+        EXPECT_TRUE(ll.get(2)->value == 3);
+    }
+
+    // Test 3: InsertInMiddle
+    TEST(LinkedListTest, InsertInMiddle){
+        cout << "\n------ LinkedList Test: InsertInMiddle ------\n";
+        
+        LinkedList ll(1);
+        ll.append(3);
+        
+        cout << "Before: ";
+        ll.printList();
+        
+        bool result = ll.insert(1, 2);
+        
+        cout << "insert( 1, 2 )\n";
+        
+        cout << "After: ";
+        ll.printList();
+        EXPECT_TRUE(result);
+        EXPECT_TRUE(ll.get(1)->value == 2);
+    }
+
+    // Test 4: InsertOutOfBounds
+    TEST(LinkedListTest, InsertOutOfBounds){
+        cout << "\n------ LinkedList Test: InsertOutOfBounds ------\n";
+        
+        LinkedList ll(1);
+        ll.append(2);
+        
+        cout << "Before: ";
+        ll.printList();
+        
+        bool result = ll.insert(3, 3);
+        
+        cout << "insert( 3, 3 )\n";
+        
+        cout << "After: ";
+        ll.printList();
+        EXPECT_FALSE(result);
+    }
+
+    TEST(LinkedListTest, InsertIntoEmptyList){
+        cout << "\n------ LinkedList Test: InsertIntoEmptyList ------\n";
+        
+        LinkedList ll(1);
+        ll.makeEmpty();
+        
+        cout << "Before: ";
+        ll.printList();
+        
+        bool result = ll.insert(0, 1);
+        
+        cout << "insert( 0, 1 )\n";
+        
+        cout << "After: ";
+        ll.printList();
+        EXPECT_TRUE(result);
+        EXPECT_TRUE(ll.get(0)->value == 1);
+    }
+
+    TEST(LinkedListTest, InsertInvalidIndexNegative){
+        cout << "\n------ LinkedList Test: InsertInvalidIndexNegative ------\n";
+        
+        LinkedList ll(1);
+        
+        cout << "Before: ";
+        ll.printList();
+        
+        bool result = ll.insert(-1, 2);
+        
+        cout << "insert( -1, 2 )\n";
+        
+        cout << "After: ";
+        ll.printList();
+        
+        EXPECT_FALSE(result);
+    }
+
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
