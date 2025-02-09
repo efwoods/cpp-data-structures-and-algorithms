@@ -26,3 +26,19 @@ class Heap{
         int remove();
         void sinkDown(int value);
 };
+
+class MinHeap {
+    private:
+        vector<int> heap;
+        int leftChild(int index);
+        int rightChild(int index);
+        int parent(int index);
+        void swap(int index1, int index2);
+
+    public:
+        void printHeap();
+        const vector<int>& getHeap() const;
+        void insert(int value);
+        int remove();
+        void sinkDown(int Index);
+};
