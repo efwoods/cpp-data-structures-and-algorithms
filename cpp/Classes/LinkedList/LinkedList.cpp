@@ -96,15 +96,13 @@ Node* LinkedList::get(int index){
     }
 }
 
-void LinkedList::set(int index, int value){
+bool LinkedList::set(int index, int value){
     if (length == 0){
-        head = new Node(value);
-        tail = head; 
-        length++;
+        return false;
     } else if (index == 0){
         head->value = value;
-    } else if (index >= length) {
-        return;
+    } else if (index >= length || index < 0) {
+        return false;
     } else {
         Node *temp = head;
         int i = 0;
@@ -114,18 +112,22 @@ void LinkedList::set(int index, int value){
         }
         temp->value = value;
     }
+    return true;
 }
 
-void LinkedList::insert(int index, int value){
+bool LinkedList::insert(int index, int value){
     if (length == 0){
         Node* newNode = new Node(value);
         head = newNode;
         tail = newNode;
         length = 1;
-    } else if (index >= length) {
+    } else if (index == length) {
         append(value);
-    } else if (index <= 0) {
+    } else if (index == 0) {
         prepend(value);
+    }
+    else if(index < 0 || index > length){
+        return false;
     } else {
         int i = 0;
         Node* pre = head;
@@ -139,6 +141,7 @@ void LinkedList::insert(int index, int value){
         pre->next->next = post;
         length++;
     }
+    return true;
 }
 
 void LinkedList::deleteNode(int index){
@@ -323,4 +326,10 @@ void LinkedList::merge(LinkedList& otherList){
             length++;
             current = current->next;
         }
+}
+
+void LinkedList::makeEmpty(){
+    while(length > 0){
+        deleteLast();
+    }
 }

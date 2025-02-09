@@ -115,16 +115,14 @@ Node* DoublyLinkedList::get(int index){
     }
 }
 
-void DoublyLinkedList::set(int index, int value){
+bool DoublyLinkedList::set(int index, int value){
     if(length == 0){
-        head = new Node(value);
-        tail = head;
-        length++;
+        return false;
     }
     else if (index == 0){
         head->value = value;
-    } else if (index >= length) {
-        return;
+    } else if (index >= length || index < 0) {
+        return false;
     } else {
         Node* temp;
         if((length / 2) - 1 >= index){
@@ -146,17 +144,15 @@ void DoublyLinkedList::set(int index, int value){
         }
         temp->value = value;
     }
+    return true;
 }
 
-void DoublyLinkedList::insert(int index, int value){
-    if (length == 0) {
-        Node* newNode = new Node(value);
-        head = newNode;
-        tail = newNode;
-        length = 1;
-    } else if(index >= length) {
+bool DoublyLinkedList::insert(int index, int value){
+    if (index < 0 || index > length){
+        return false;
+    } else if(index == length) {
         append(value);
-    } else if(index <= 0){
+    } else if(index == 0){
         prepend(value);
     } else {
         Node* temp;
@@ -188,6 +184,7 @@ void DoublyLinkedList::insert(int index, int value){
         temp->prev = newNode;
         length++;
     }
+    return true;
 }
 
 void DoublyLinkedList::deleteNode(int index){
